@@ -246,11 +246,21 @@
       margin-bottom:15px;
     }
     .itinerary-day{
-      margin-bottom:15px;
-      background:#f7f9fb;
-      padding:12px 14px;
-      border-radius:10px;
-    }
+      .itinerary-day {
+  margin-bottom:15px;
+  background:#f7f9fb;
+  padding:15px;
+  border-radius:12px;
+  border-left:5px solid #0f2027;
+}
+
+.itinerary-day h4::before {
+  content:"📍 ";
+}
+
+.itinerary-day p::before {
+  content:"✈️ ";
+}
     .itinerary-day h4{
       margin-bottom:5px;
       color:#0f2027;
@@ -346,7 +356,6 @@
         </div>
         <a href="#" class="btn" onclick="openModal('manali')">View Itinerary</a>
       </div>
-    </div>
 
     <div class="card">
       <img src="Goa.jpeg" alt="Goa">
@@ -358,9 +367,54 @@
         </div>
         <a href="#" class="btn" onclick="openModal('goa')">View Itinerary</a>
       </div>
+      
+      <div class="card">
+  <img src="https://images.unsplash.com/photo-1609942072337-0e38a6b5b96b" alt="Kashmir">
+  <div class="card-content">
+    <div>
+      <h3>Kashmir</h3>
+      <p>Paradise on Earth with snow mountains & Dal Lake.</p>
+      <div class="price">4N/5D ₹14,000 per person</div>
     </div>
-
+    <a href="#" class="btn" onclick="openModal('kashmir')">View Itinerary</a>
   </div>
+</div>
+
+      <div class="card">
+  <img src="https://images.unsplash.com/photo-1593697820988-1e1cb5f9b3d6" alt="Ladakh">
+  <div class="card-content">
+    <div>
+      <h3>Ladakh</h3>
+      <p>High altitude deserts, Pangong Lake & bike trips.</p>
+      <div class="price">5N/6D ₹18,000 per person</div>
+    </div>
+    <a href="#" class="btn" onclick="openModal('ladakh')">View Itinerary</a>
+  </div>
+</div>
+
+      <div class="card">
+  <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220" alt="Rajasthan">
+  <div class="card-content">
+    <div>
+      <h3>Rajasthan</h3>
+      <p>Royal palaces, deserts & heritage cities.</p>
+      <div class="price">4N/5D ₹12,000 per person</div>
+    </div>
+    <a href="#" class="btn" onclick="openModal('rajasthan')">View Itinerary</a>
+  </div>
+</div>
+
+      <div class="card">
+  <img src="https://images.unsplash.com/photo-1622308644420-b20142dc993c" alt="Meghalaya">
+  <div class="card-content">
+    <div>
+      <h3>Meghalaya</h3>
+      <p>Waterfalls, living root bridges & cleanest villages.</p>
+      <div class="price">5N/6D ₹20,000 per person</div>
+    </div>
+    <a href="#" class="btn" onclick="openModal('meghalaya')">View Itinerary</a>
+  </div>
+</div>
 
   <h3 style="margin:40px 0 15px;color:#203a43;">International Packages</h3>
   <div class="grid">
@@ -375,7 +429,6 @@
         </div>
         <a href="#" class="btn" onclick="openModal('dubai')">View Itinerary</a>
       </div>
-    </div>
 
     <div class="card">
       <img src="Thailand.jpeg" alt="Thailand">
@@ -387,7 +440,6 @@
         </div>
         <a href="#" class="btn" onclick="openModal('thailand')">View Itinerary</a>
       </div>
-    </div>
 
     <div class="card">
       <img src="Bali.jpeg" alt="Bali">
@@ -399,7 +451,6 @@
         </div>
         <a href="#" class="btn" onclick="openModal('bali')">View Itinerary</a>
       </div>
-    </div>
 
     <div class="card">
       <img src="vietnam.jpeg" alt="Vietnam">
@@ -411,7 +462,6 @@
         </div>
         <a href="#" class="btn" onclick="openModal('vietnam')">View Itinerary</a>
       </div>
-    </div>
 
     <div class="card">
       <img src="Singapore.webp" alt="Singapore">
@@ -423,7 +473,6 @@
         </div>
         <a href="#" class="btn" onclick="openModal('singapore')">View Itinerary</a>
       </div>
-    </div>
 
     <div class="card">
       <img src="europe.jpeg" alt="Europe">
@@ -435,10 +484,18 @@
         </div>
         <a href="#" class="btn" onclick="openModal('europe')">View Itinerary</a>
       </div>
-    </div>
-
-  </div>
 </section>
+      <div class="card">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Maldives">
+  <div class="card-content">
+    <div>
+      <h3>Maldives</h3>
+      <p>Luxury water villas, crystal clear beaches & romantic getaway.</p>
+      <div class="price">4N/5D ₹55,000 per person</div>
+    </div>
+    <a href="#" class="btn" onclick="openModal('maldives')">View Itinerary</a>
+  </div>
+</div>
 
 <section class="section" id="about">
   <h2>🏢 About Vagabond Escapes</h2>
@@ -452,7 +509,6 @@
         Whether you're planning a romantic honeymoon, family vacation, group tour, or corporate trip, our experienced team ensures seamless planning, best prices, and unforgettable experiences.
       </p>
     </div>
-  </div>
 </section>
 
 <section class="section" id="reviews">
@@ -474,7 +530,7 @@
       <h4>Neha Gupta – Bali Trip</h4>
       <p>“Loved the entire Bali package. Hotels and itinerary were exactly as promised. 5 stars!”</p>
     </div>
-  </div>
+
 </section>
 
   <div class="section">
@@ -494,7 +550,6 @@
       View All Reviews on Google
     </a>
   </div>
-</div>
   
 <div class="contact-box">
   <div>
@@ -529,9 +584,7 @@
       width="100%" height="250" style="border:0;border-radius:10px;"
       allowfullscreen="" loading="lazy">
     </iframe>
-  </div>
-</div>
-  </div>  
+  </div> 
 
 <div class="section">
   <h2>📩 Book Your Trip</h2>
@@ -551,15 +604,12 @@
 
 <div>
   <h3>Quick Enquiry</h3>
-    <div>
-      <h3>Quick Enquiry</h3>
       <p>
         Click the WhatsApp button below and chat directly with our travel expert for instant quotes and bookings.
       </p>
       <a href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes,%20I%20want%20to%20enquire%20about%20tour%20packages."
          target="_blank" class="btn" style="background:#25d366;">Chat on WhatsApp</a>
     </div>
-  </div>
 </section>
 
 <footer>
@@ -577,7 +627,6 @@
   <div class="modal-content" id="modalContent">
     <button class="close-btn" onclick="closeModal()">×</button>
   </div>
-</div>
 
 <script>
 const itineraries = {
@@ -680,6 +729,74 @@ const itineraries = {
       }
     ]
   },
+
+  kashmir:{
+  title:"Kashmir – 4 Nights / 5 Days",
+  img:"https://images.unsplash.com/photo-1609942072337-0e38a6b5b96b",
+  days:[
+    {day:"Day 1 – Arrival in Srinagar",text:"Arrival at Srinagar airport. Transfer to hotel/houseboat. Enjoy Shikara ride on Dal Lake in the evening. Overnight stay in Srinagar."},
+
+    {day:"Day 2 – Gulmarg Excursion",text:"Full day trip to Gulmarg. Enjoy Gondola cable car ride, snow activities and scenic views. Return to Srinagar in evening."},
+
+    {day:"Day 3 – Pahalgam Excursion",text:"Drive to Pahalgam, also known as Valley of Shepherds. Visit Betaab Valley, Aru Valley and Lidder River. Return to Srinagar."},
+
+    {day:"Day 4 – Local Sightseeing",text:"Visit Mughal Gardens (Shalimar Bagh, Nishat Bagh), Shankaracharya Temple and local markets for shopping."},
+
+    {day:"Day 5 – Departure",text:"After breakfast, transfer to airport for onward journey."}
+  ]
+},
+
+  ladakh:{
+  title:"Ladakh – 5 Nights / 6 Days",
+  img:"https://images.unsplash.com/photo-1593697820988-1e1cb5f9b3d6",
+  days:[
+    {day:"Day 1 – Arrival in Leh",text:"Arrival at Leh Airport. Transfer to hotel and rest for acclimatization due to high altitude."},
+
+    {day:"Day 2 – Leh Local Sightseeing",text:"Visit Shanti Stupa, Leh Palace, Hall of Fame and local markets."},
+
+    {day:"Day 3 – Leh to Nubra Valley",text:"Drive via Khardung La Pass (world’s highest motorable road). Visit Diskit Monastery and enjoy camel ride in sand dunes."},
+
+    {day:"Day 4 – Nubra to Pangong Lake",text:"Drive to Pangong Lake. Enjoy breathtaking views of the lake and overnight stay near Pangong."},
+
+    {day:"Day 5 – Pangong to Leh",text:"Return to Leh. Evening free for shopping and café visits."},
+
+    {day:"Day 6 – Departure",text:"Transfer to airport for onward journey."}
+  ]
+},
+
+  rajasthan:{
+  title:"Rajasthan – 4 Nights / 5 Days",
+  img:"https://images.unsplash.com/photo-1582510003544-4d00b7f74220",
+  days:[
+    {day:"Day 1 – Jaipur Arrival",text:"Arrival in Jaipur. Visit Hawa Mahal, City Palace and Jantar Mantar. Evening free for shopping."},
+
+    {day:"Day 2 – Jaipur Sightseeing",text:"Visit Amber Fort, Nahargarh Fort and Jal Mahal. Enjoy local Rajasthani culture."},
+
+    {day:"Day 3 – Jaipur to Jodhpur",text:"Drive to Jodhpur. Visit Mehrangarh Fort and local markets."},
+
+    {day:"Day 4 – Jodhpur to Udaipur",text:"Drive to Udaipur. Evening enjoy boat ride at Lake Pichola."},
+
+    {day:"Day 5 – Departure",text:"Visit City Palace and Jagdish Temple. Transfer for departure."}
+  ]
+},
+
+  meghalaya:{
+  title:"Meghalaya – 5 Nights / 6 Days",
+  img:"https://images.unsplash.com/photo-1622308644420-b20142dc993c",
+  days:[
+    {day:"Day 1 – Arrival in Shillong",text:"Arrival in Guwahati and transfer to Shillong. Visit Umiam Lake enroute."},
+
+    {day:"Day 2 – Shillong Sightseeing",text:"Visit Elephant Falls, Shillong Peak and local markets."},
+
+    {day:"Day 3 – Cherrapunji",text:"Visit Nohkalikai Falls, Seven Sisters Falls and Mawsmai Caves."},
+
+    {day:"Day 4 – Dawki & Mawlynnong",text:"Visit Dawki river for boating and Mawlynnong (Asia’s cleanest village)."},
+
+    {day:"Day 5 – Living Root Bridge",text:"Trek to famous living root bridges and enjoy nature."},
+
+    {day:"Day 6 – Departure",text:"Return to Guwahati for departure."}
+  ]
+},
 
   dubai: {
     title: "Dubai – 3 Nights / 4 Days",
@@ -844,48 +961,23 @@ const itineraries = {
         day: "Day 7 – Departure",
         text: "Transfer to airport for onward journey."
       }
-    ]
-  }
 };
 
-function openModal(key){
-  const data = itineraries[key];
-  if(!data) return;
+maldives:{
+  title:"Maldives – 4 Nights / 5 Days",
+  img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  days:[
+    {day:"Day 1 – Arrival in Maldives",text:"Arrival at Male International Airport. Meet our representative and transfer to resort via speedboat. Check-in and relax. Enjoy stunning sunset views and beach walk. Overnight stay at resort."},
 
-  const modal = document.getElementById("modal");
-  const content = document.getElementById("modalContent");
+    {day:"Day 2 – Water Sports & Beach Activities",text:"After breakfast, enjoy water activities like snorkeling, scuba diving, jet ski, kayaking and banana boat ride. Rest of the day free for leisure and relaxation at beach."},
 
-  let html = `
-    <button class="close-btn" onclick="closeModal()">×</button>
-    <h2>${data.title}</h2>
-    <img src="${data.img}" alt="${data.title}">
-  `;
+    {day:"Day 3 – Leisure & Spa",text:"Enjoy a relaxed day at resort. Optional spa session, infinity pool access and private beach relaxation. Capture beautiful photos and enjoy romantic candlelight dinner (optional)."},
 
-  data.days.forEach(d=>{
-    html += `
-      <div class="itinerary-day">
-        <h4>${d.day}</h4>
-        <p>${d.text}</p>
-      </div>
-    `;
-  });
+    {day:"Day 4 – Island Excursion",text:"Explore nearby local islands, experience Maldivian culture and shopping. Evening free for sunset views and beachside dinner."},
 
-  html += `
-    <div class="modal-actions">
-      <button class="pdf-btn" onclick="downloadPDF('${key}')">Download PDF Itinerary</button>
-      <a class="btn" style="background:#25d366"
-         href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes,%20I%20want%20to%20book%20the%20${encodeURIComponent(data.title)}%20package."
-         target="_blank">WhatsApp Enquiry</a>
-    </div>
-  `;
-
-  content.innerHTML = html;
-  modal.style.display = "flex";
-}
-
-function closeModal(){
-  document.getElementById("modal").style.display = "none";
-}
+    {day:"Day 5 – Departure",text:"After breakfast, check-out from resort and transfer to airport for onward journey with beautiful memories."}
+  ]
+},
 
 function downloadPDF(key){
   const data = itineraries[key];
@@ -896,16 +988,61 @@ function downloadPDF(key){
   <head>
     <title>${data.title}</title>
     <style>
-      body { font-family: Arial; padding:20px; }
-      h1 { color:#0f2027; }
-      .day { margin-bottom:15px; }
-      .footer { margin-top:30px; font-size:14px; color:#555; }
+      body { font-family: Arial; margin:0; padding:0; }
+      
+      .header{
+        background:#0f2027;
+        color:#fff;
+        padding:20px;
+        text-align:center;
+      }
+
+      .header img{
+        width:60px;
+        margin-bottom:8px;
+      }
+
+      .container{
+        padding:20px;
+      }
+
+      h2{
+        color:#203a43;
+        margin-bottom:15px;
+      }
+
+      .day{
+        margin-bottom:15px;
+        padding:12px;
+        background:#f4f7fb;
+        border-radius:10px;
+      }
+
+      .day h3{
+        margin-bottom:5px;
+        color:#0f2027;
+      }
+
+      .footer{
+        margin-top:30px;
+        padding:15px;
+        background:#eee;
+        font-size:14px;
+        text-align:center;
+      }
     </style>
   </head>
+
   <body>
 
-    <h1>Vagabond Escapes</h1>
-    <h2>${data.title}</h2>
+    <div class="header">
+      <img src="logo.png.jpeg">
+      <h1>Vagabond Escapes</h1>
+      <p>Premium Travel Itinerary</p>
+    </div>
+
+    <div class="container">
+      <h2>${data.title}</h2>
   `;
 
   data.days.forEach(d=>{
@@ -918,10 +1055,13 @@ function downloadPDF(key){
   });
 
   content += `
-    <div class="footer">
-      <p><strong>Contact:</strong> +91 9773669645</p>
-      <p>Email: vagabondescapesinfo@gmail.com</p>
     </div>
+
+    <div class="footer">
+      📞 +91 9773669645 | ✉ vagabondescapesinfo@gmail.com  
+      <br>Follow us for more travel deals ✈️
+    </div>
+
   </body>
   </html>
   `;
@@ -930,6 +1070,7 @@ function downloadPDF(key){
   win.document.write(content);
   win.document.close();
   win.print();
+}
 }
 
   function sendToWhatsApp(e){
@@ -945,6 +1086,8 @@ Name: ${name}
 Phone: ${phone}
 Destination: ${destination}
 Travel Date: ${date}`;
+No of Pax : ${Pax}
+No of Nights: ${nights}    
 
   let url = "https://wa.me/919773669645?text=" + encodeURIComponent(msg);
 
