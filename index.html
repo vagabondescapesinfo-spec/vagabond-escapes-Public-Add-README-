@@ -30,7 +30,7 @@
       align-items:center;
       flex-wrap:wrap;
       position:sticky;
-      top:0;
+      top:0;20
       z-index:999;
     }
     header .logo{
@@ -477,6 +477,25 @@
   </div>
 </section>
 
+  <div class="section">
+  <h2>⭐ Google Reviews</h2>
+
+  <iframe 
+    src="https://www.google.com/maps?q=Vagabond%20Escapes%20Noida&output=embed" 
+    width="100%" 
+    height="300" 
+    style="border:0;border-radius:10px;" 
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+
+  <div style="text-align:center;margin-top:15px;">
+    <a href="https://maps.app.goo.gl/LqPmprkB3LskpuYb9" target="_blank" class="btn">
+      View All Reviews on Google
+    </a>
+  </div>
+</div>
+  
 <div class="contact-box">
   <div>
     <h3>Office Details</h3>
@@ -512,7 +531,26 @@
     </iframe>
   </div>
 </div>
-  
+  </div>  
+
+<div class="section">
+  <h2>📩 Book Your Trip</h2>
+  <form onsubmit="sendToWhatsApp(event)" style="max-width:500px;margin:auto;">
+    
+    <input type="text" id="name" placeholder="Your Name" required style="width:100%;padding:10px;margin:8px 0;"><br>
+    
+    <input type="tel" id="phone" placeholder="Phone Number" required style="width:100%;padding:10px;margin:8px 0;"><br>
+    
+    <input type="text" id="destination" placeholder="Destination (Goa, Dubai...)" required style="width:100%;padding:10px;margin:8px 0;"><br>
+    
+    <input type="date" id="date" required style="width:100%;padding:10px;margin:8px 0;"><br>
+
+    <button type="submit" class="btn" style="width:100%;">Send Enquiry</button>
+  </form>
+</div>
+
+<div>
+  <h3>Quick Enquiry</h3>
     <div>
       <h3>Quick Enquiry</h3>
       <p>
@@ -853,30 +891,65 @@ function downloadPDF(key){
   const data = itineraries[key];
   if(!data) return;
 
-  let text = `${data.title}\n\n`;
+  let content = `
+  <html>
+  <head>
+    <title>${data.title}</title>
+    <style>
+      body { font-family: Arial; padding:20px; }
+      h1 { color:#0f2027; }
+      .day { margin-bottom:15px; }
+      .footer { margin-top:30px; font-size:14px; color:#555; }
+    </style>
+  </head>
+  <body>
+
+    <h1>Vagabond Escapes</h1>
+    <h2>${data.title}</h2>
+  `;
 
   data.days.forEach(d=>{
-    text += `${d.day}\n${d.text}\n\n`;
+    content += `
+      <div class="day">
+        <h3>${d.day}</h3>
+        <p>${d.text}</p>
+      </div>
+    `;
   });
 
- text += `\n\nCompany: Vagabond Escapes\nEmail: vagabondescapesinfo@gmail.com\nPhone: +91 9773669645 / 7524808364 / 9999625966`;
-  
-  const blob = new Blob([text], { type: "application/pdf" });
-  const url = URL.createObjectURL(blob);
+  content += `
+    <div class="footer">
+      <p><strong>Contact:</strong> +91 9773669645</p>
+      <p>Email: vagabondescapesinfo@gmail.com</p>
+    </div>
+  </body>
+  </html>
+  `;
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = data.title.replace(/\s+/g,'_') + ".pdf";
-  a.click();
-  URL.revokeObjectURL(url);
+  let win = window.open('', '', 'width=800,height=600');
+  win.document.write(content);
+  win.document.close();
+  win.print();
 }
 
-window.onclick = function(event){
-  const modal = document.getElementById("modal");
-  if(event.target === modal){
-    closeModal();
-  }
-};
+  function sendToWhatsApp(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let destination = document.getElementById("destination").value;
+  let date = document.getElementById("date").value;
+
+  let msg = `New Booking Enquiry:
+Name: ${name}
+Phone: ${phone}
+Destination: ${destination}
+Travel Date: ${date}`;
+
+  let url = "https://wa.me/919773669645?text=" + encodeURIComponent(msg);
+
+  window.open(url, '_blank');
+}
 </script>
 
 </body>
