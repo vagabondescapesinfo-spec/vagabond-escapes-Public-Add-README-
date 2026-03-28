@@ -368,7 +368,8 @@
         </div>
         <a href="#" class="btn" onclick="openModal('goa')">View Itinerary</a>
       </div>
-      
+    </div>
+
       <div class="card">
   <img src="https://images.unsplash.com/photo-1609942072337-0e38a6b5b96b" alt="Kashmir">
   <div class="card-content">
@@ -966,8 +967,9 @@ const itineraries = {
       {
         day: "Day 7 – Departure",
         text: "Transfer to airport for onward journey."
-      }
-},
+      }  
+    ]
+  },
 
 maldives:{
   title:"Maldives – 4 Nights / 5 Days",
@@ -1024,12 +1026,6 @@ function downloadPDF(key){
 
   const element = document.createElement("div");
   element.innerHTML = content;
-
-  html2pdf().from(element).save(data.title + ".pdf");
-}
-
-const element = document.createElement("div");
-element.innerHTML = content;
 
 html2pdf()
   .from(element)
