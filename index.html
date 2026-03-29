@@ -319,6 +319,22 @@
 <section class="section" id="packages">
   <h2>🌏 Our Tour Packages</h2>
 
+  <div id="domestic" class="category">
+  <!-- Domestic cards -->
+</div>
+
+<div id="international" class="category" style="display:none;">
+  <!-- International cards -->
+</div>
+
+<div id="honeymoon" class="category" style="display:none;">
+  <!-- Honeymoon cards -->
+</div>
+
+<div id="group" class="category" style="display:none;">
+  <!-- Group cards -->
+</div>
+
   <h3 style="margin:30px 0 15px;color:#203a43;">Domestic Packages</h3>
   <div class="grid">
 
@@ -629,11 +645,9 @@
   💬 WhatsApp
 </a>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
-  <div class="modal-content" id="modalContent">
-    <button class="close-btn" onclick="closeModal()">×</button>
-  </div>
+  <div class="modal-content" id="modalContent"></div>
+</div>
 
 <script>
 const itineraries = {
@@ -1063,9 +1077,58 @@ No of Nights: ${nights}`;
   function sendToWhatsApp(e){
     ...
   }
-</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+  <script>
+function openModal(key){
+  const modal = document.getElementById("modal");
+  const modalContent = document.getElementById("modalContent");
+
+  const data = itineraries[key];
+  if(!data) return;
+
+  let html = `
+    <button class="close-btn" onclick="closeModal()">×</button>
+    <h2>${data.title}</h2>
+    <img src="${data.img}" alt="">
+  `;
+
+  data.days.forEach(d=>{
+    html += `
+      <div class="itinerary-day">
+        <h4>${d.day}</h4>
+        <p>${d.text}</p>
+      </div>
+    `;
+  });
+
+  html += `
+    <div class="modal-actions">
+      <button class="pdf-btn" onclick="downloadPDF('${key}')">Download PDF</button>
+    </div>
+  `;
+
+  modalContent.innerHTML = html;
+  modal.style.display = "flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+  
+  <script>
+function showCategory(type){
+  let categories = document.querySelectorAll(".category");
+
+  categories.forEach(cat => {
+    cat.style.display = "none";
+  });
+
+  document.getElementById(type).style.display = "block";
+}
+</script>
+  
 </body>
 </html>
