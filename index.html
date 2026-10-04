@@ -202,11 +202,9 @@ header.site{
 
 .itin-panel{display:none;border-top:1px solid var(--line);background:var(--paper);padding:16px 20px;}
 .itin-panel.open{display:block;}
-.itin-day{margin-bottom:10px;font-size:13.8px;}
+.itin-day{margin-bottom:15px;font-size:13.8px;line-height:1.65;}
+.itin-day p{margin:0;color:#344640;}
 .itin-day b{color:var(--teal-deep);display:block;font-size:13.5px;margin-bottom:2px;}
-.rate-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12.8px;}
-.rate-table th,.rate-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;}
-.rate-table th{background:var(--paper-2);color:var(--teal-deep);font-weight:700;}
 .itin-cta{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
 .itin-cta a{
   font-size:12.8px;font-weight:600;padding:8px 12px;border-radius:6px;
@@ -295,7 +293,7 @@ header.site{
 
     <div class="head-cta">
       <a class="btn btn-outline" href="#connect">Leave a Review</a>
-      <a class="btn btn-rust" href="https://wa.me/919773669645?text=Hi%20Vagabond%20Escapes%2C%20I%20want%20a%20holiday%20package%20quote." target="_blank" rel="noopener">WhatsApp Us</a>
+      <a class="btn btn-rust" href="#destinations" onclick="openEnquiry('General Holiday Enquiry','Custom Package','Website'); return false;">Get Best Quote</a>
     </div>
   </div>
 </header>
@@ -324,7 +322,7 @@ header.site{
 
 <main class="wrap destinations" id="destinations"></main>
 
-<p class="wrap no-results" id="noResults">No package matches that search. Try a destination name like "Kerala" or "Dubai", or <a href="#connect" style="color:var(--rust);font-weight:600;">ask us directly</a>.</p>
+<p class="wrap no-results" id="noResults">No package matches that search. Try a destination name like "Kerala" or "Dubai", or <a href="#" onclick="openEnquiry('General Holiday Enquiry','Custom Package','Website'); return false;" style="color:var(--rust);font-weight:600;">enquire directly</a>.</p>
 
 <section class="closing">
   <img class="closing-badge" src="assets/closing-badge.png" alt="Vagabond Escapes">
@@ -376,12 +374,64 @@ header.site{
 
     <div class="footer-bottom">
       <div>© <span id="year"></span> Vagabond Escapes. All packages are indicative — final quote depends on travel dates &amp; hotel category.</div>
-      <div>3-Star hotel category shown unless stated · GST &amp; convenience fee extra</div>
+      <div>Hotel category and final quote depend on travel dates &amp; requirements · GST &amp; applicable charges extra</div>
     </div>
   </div>
 </section>
 
-<a class="float-wa" href="https://wa.me/919773669645?text=Hi%20Vagabond%20Escapes%2C%20I%20want%20a%20holiday%20package%20quote." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+<a class="float-wa" href="#connect" onclick="openEnquiry('General Holiday Enquiry','Custom Package','Website'); return false;" aria-label="Get a package quote">💬</a>
+
+
+<!-- ================= ENQUIRY MODAL ================= -->
+<div class="modal-backdrop" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle">
+  <div class="enquiry-modal">
+    <div class="enquiry-head">
+      <div>
+        <h3 id="enquiryTitle">Get Your Personalised Quote</h3>
+        <p>Share your travel details and we'll send you a personalised quote.</p>
+      </div>
+      <button class="modal-close" type="button" onclick="closeEnquiry()" aria-label="Close">×</button>
+    </div>
+    <form class="enquiry-form" id="enquiryForm">
+      <div class="selected-package">
+        <strong>Selected package:</strong>
+        <span id="selectedPackage">Holiday Package</span>
+      </div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="leadName">Name *</label>
+          <input id="leadName" name="name" required placeholder="Your name">
+        </div>
+        <div class="form-field">
+          <label for="leadPhone">WhatsApp Number *</label>
+          <input id="leadPhone" name="phone" required inputmode="tel" placeholder="10-digit mobile number">
+        </div>
+        <div class="form-field">
+          <label for="leadDate">Travel Date</label>
+          <input id="leadDate" name="date" type="date">
+        </div>
+        <div class="form-field">
+          <label for="leadAdults">Adults</label>
+          <input id="leadAdults" name="adults" type="number" min="1" value="2">
+        </div>
+        <div class="form-field">
+          <label for="leadChildren">Children</label>
+          <input id="leadChildren" name="children" type="number" min="0" value="0">
+        </div>
+        <div class="form-field">
+          <label for="leadBudget">Approx. Total Trip Budget (optional)</label>
+          <input id="leadBudget" name="budget" placeholder="e.g. total trip budget">
+        </div>
+        <div class="form-field full">
+          <label for="leadMessage">Requirements</label>
+          <textarea id="leadMessage" name="message" placeholder="Hotel preference, pickup city, honeymoon, sightseeing, etc."></textarea>
+        </div>
+      </div>
+      <button class="submit-enquiry" type="submit">💬 Send Enquiry on WhatsApp</button>
+      <p class="form-footnote">We'll use these details only to respond to your travel enquiry.</p>
+    </form>
+  </div>
+</div>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -440,29 +490,28 @@ const PHOTOS = {
 "italy_switzerland": "italy_switzerland.jpg",
 "paris_switzerland_italy": "paris_switzerland_italy.jpg",
 "maldives_region": "maldives_region.jpg",
-"bangkok_pattaya": "bangkok_pattaya.jpg",
-};
+"bangkok_pattaya": "bangkok_pattaya.jpg"};
 
 const DOMESTIC = [
   {
     region: "Himachal Pradesh",
     note: "Manali, Shimla and combo circuits out of Delhi/Chandigarh.",
     packages: [
-      { name:"Manali Escape", duration:"3N/4D", imgKey:"manali1", adult:9500, childBed:7000, childNoBed:4500, extraBed:7500,
+      { name:"Manali Escape", duration:"3N/4D", imgKey:"manali1",    
         itin:[
           ["Day 1","Delhi/Chandigarh → Manali. Hotel check-in, freshen up and evening leisure."],
           ["Day 2","Solang Valley → Atal Tunnel → Sissu sightseeing. Evening return to Manali."],
           ["Day 3","Hidimba Temple → Manu Temple → Old Manali → Vashisht Temple & Hot Springs → Mall Road."],
           ["Day 4","Manali → Delhi/Chandigarh departure."]
         ]},
-      { name:"Shimla Delight", duration:"3N/4D", imgKey:"shimla1", adult:9000, childBed:6500, childNoBed:4000, extraBed:7000,
+      { name:"Shimla Delight", duration:"3N/4D", imgKey:"shimla1",    
         itin:[
           ["Day 1","Delhi/Chandigarh → Shimla, check-in & Mall Road."],
           ["Day 2","Kufri → Green Valley → Jakhoo Temple."],
           ["Day 3","Shimla Local → Ridge → Christ Church → Lakkar Bazaar."],
           ["Day 4","Shimla → Delhi/Chandigarh."]
         ]},
-      { name:"Shimla + Manali Explorer", duration:"5N/6D", imgKey:"manali2", adult:16500, childBed:12500, childNoBed:8000, extraBed:14500,
+      { name:"Shimla + Manali Explorer", duration:"5N/6D", imgKey:"manali2",    
         itin:[
           ["Day 1","Delhi/Chandigarh → Shimla, check-in & evening Mall Road."],
           ["Day 2","Kufri → Green Valley → Jakhoo Temple → Shimla Local."],
@@ -471,7 +520,7 @@ const DOMESTIC = [
           ["Day 5","Hidimba Temple → Old Manali → Vashisht → Mall Road."],
           ["Day 6","Manali → Delhi/Chandigarh."]
         ]},
-      { name:"Manali + Dharamshala Escape", duration:"5N/6D", imgKey:"manali2", adult:16000, childBed:12000, childNoBed:7500, extraBed:14000,
+      { name:"Manali + Dharamshala Escape", duration:"5N/6D", imgKey:"manali2",    
         itin:[
           ["Day 1","Delhi/Chandigarh → Dharamshala, check-in & McLeodganj evening."],
           ["Day 2","McLeodganj → Dalai Lama Temple → Bhagsu Waterfall → Bhagsunag."],
@@ -486,7 +535,7 @@ const DOMESTIC = [
     region: "Rajasthan",
     note: "Jaipur, Jodhpur and Udaipur circuits.",
     packages: [
-      { name:"Jaipur – Udaipur", duration:"4N/5D", imgKey:"udaipur1", adult:14500, childBed:10500, childNoBed:7000, extraBed:12500,
+      { name:"Jaipur – Udaipur", duration:"4N/5D", imgKey:"udaipur1",    
         itin:[
           ["Day 1","Arrival in Jaipur. Pickup from airport/railway station, hotel check-in. Visit Hawa Mahal, City Palace & Jantar Mantar. Evening free at local market."],
           ["Day 2","Visit Amber Fort. Photo stop at Jal Mahal. Visit Albert Hall Museum & Birla Mandir. Evening shopping at Johari/Bapu Bazaar."],
@@ -494,7 +543,7 @@ const DOMESTIC = [
           ["Day 4","Visit City Palace overlooking Lake Pichola, Jagdish Temple & Saheliyon Ki Bari, Fateh Sagar Lake. Evening Lake Pichola boat ride & sunset."],
           ["Day 5","Breakfast, check-out, last-minute shopping, drop at Udaipur airport/railway station."]
         ]},
-      { name:"Complete Rajasthan", duration:"5N/6D", imgKey:"complete_rajasthan", adult:18000, childBed:13500, childNoBed:9000, extraBed:16000,
+      { name:"Rajasthan Escape", duration:"5N/6D", imgKey:"complete_rajasthan",    
         itin:[
           ["Day 1","Arrival in Jaipur, hotel check-in. Visit Hawa Mahal, City Palace & Jantar Mantar. Evening market & shopping."],
           ["Day 2","Visit Amber Fort, Jal Mahal photo stop, Albert Hall Museum & Birla Mandir. Evening shopping."],
@@ -509,14 +558,14 @@ const DOMESTIC = [
     region: "Kerala",
     note: "Munnar hills to Alleppey backwaters.",
     packages: [
-      { name:"Munnar Escape", duration:"3N/4D", imgKey:"munnar1", adult:13500, couple:27000, childBed:9500, childNoBed:6500, extraBed:11500,
+      { name:"Munnar Escape", duration:"3N/4D", imgKey:"munnar1",     
         itin:[
           ["Day 1","Cochin → Munnar. Pickup, scenic drive, en-route Cheeyappara & Valara Waterfalls. Check-in, evening leisure."],
           ["Day 2","Mattupetty Dam & Lake, Echo Point & Kundala Lake, tea plantations & Tea Museum. Evening local market."],
           ["Day 3","Top Station/scenic viewpoints, Eravikulam National Park (subject to availability), tea garden views."],
           ["Day 4","Breakfast & check-out, drive to Cochin, drop at airport/railway station."]
         ]},
-      { name:"Kerala Backwater Escape", duration:"4N/5D", imgKey:"kerala_backwater", adult:16500, couple:33000, childBed:11500, childNoBed:7500, extraBed:14500,
+      { name:"Kerala Backwater Escape", duration:"4N/5D", imgKey:"kerala_backwater",     
         itin:[
           ["Day 1","Cochin → Munnar via scenic mountain routes & waterfall sightseeing. Check-in, leisure evening."],
           ["Day 2","Mattupetty Dam & Echo Point, Kundala Lake, tea plantations & Tea Museum. Evening shopping."],
@@ -524,7 +573,7 @@ const DOMESTIC = [
           ["Day 4","Morning backwater experience, proceed to Cochin, visit Fort Kochi & Chinese Fishing Nets."],
           ["Day 5","Breakfast & check-out, airport/railway station drop."]
         ]},
-      { name:"Kerala Grand Escape", duration:"5N/6D", imgKey:"kerala_grand", adult:19500, couple:39000, childBed:13500, childNoBed:9000, extraBed:17500,
+      { name:"Kerala Grand Escape", duration:"5N/6D", imgKey:"kerala_grand",     
         itin:[
           ["Day 1","Cochin → Munnar. Visit Cheeyappara & Valara Waterfalls. Check-in & leisure."],
           ["Day 2","Mattupetty Dam, Echo Point & Kundala Lake, Tea Museum & plantations."],
@@ -539,21 +588,21 @@ const DOMESTIC = [
     region: "Sikkim & Darjeeling",
     note: "Himalayan monasteries, tea gardens and mountain views.",
     packages: [
-      { name:"Darjeeling Escape", duration:"3N/4D", imgKey:"darjeeling_escape", adult:13500, couple:27000, childBed:9500, childNoBed:6500, extraBed:11500,
+      { name:"Darjeeling Escape", duration:"3N/4D", imgKey:"darjeeling_escape",     
         itin:[
           ["Day 1","Pickup from Bagdogra/NJP. Scenic drive to Darjeeling, check-in. Evening Mall Road/Chowrasta."],
           ["Day 2","Early sunrise at Tiger Hill. Ghoom Monastery & Batasia Loop. Himalayan Mountaineering Institute & Padmaja Naidu Zoo."],
           ["Day 3","Rock Garden & Tea Garden. Scenic viewpoints, café hopping, evening at Chowrasta."],
           ["Day 4","Breakfast & check-out, drive to Bagdogra/NJP, departure."]
         ]},
-      { name:"Gangtok Escape", duration:"3N/4D", imgKey:"gangtok_escape", adult:14500, couple:29000, childBed:10500, childNoBed:7000, extraBed:12500,
+      { name:"Gangtok Escape", duration:"3N/4D", imgKey:"gangtok_escape",     
         itin:[
           ["Day 1","Pickup from airport/railway station, scenic drive to Gangtok, check-in. Evening MG Marg."],
           ["Day 2","Rumtek Monastery, Tashi View Point & Ganesh Tok, Enchey Monastery & Hanuman Tok. Evening MG Marg."],
           ["Day 3","Full-day excursion to Tsomgo Lake & Baba Mandir. Optional Nathula Pass (subject to permit/weather)."],
           ["Day 4","Breakfast & check-out, drive to Bagdogra/NJP, departure."]
         ]},
-      { name:"Gangtok + Darjeeling Highlights", duration:"4N/5D", imgKey:"gangtok_darjeeling", adult:16500, couple:33000, childBed:11500, childNoBed:7500, extraBed:14500,
+      { name:"Gangtok + Darjeeling Highlights", duration:"4N/5D", imgKey:"gangtok_darjeeling",     
         itin:[
           ["Day 1","Pickup, scenic drive to Gangtok, check-in. Evening MG Marg."],
           ["Day 2","Tashi View Point, Ganesh Tok & Hanuman Tok, Rumtek/Enchey Monastery. Evening shopping."],
@@ -567,14 +616,14 @@ const DOMESTIC = [
     region: "Andaman Islands",
     note: "Port Blair, Havelock (Swaraj Dweep) and Neil Island (Shaheed Dweep).",
     packages: [
-      { name:"Andaman Escape", duration:"3N/4D", imgKey:"andaman_escape", adult:16500, couple:33000, childBed:11500, childNoBed:8000, extraBed:14500,
+      { name:"Andaman Escape", duration:"3N/4D", imgKey:"andaman_escape",     
         itin:[
           ["Day 1","Arrival in Port Blair, check-in, visit Cellular Jail. Evening Light & Sound Show."],
           ["Day 2","Ferry transfer to Swaraj Dweep (Havelock), check-in, Radhanagar Beach & sunset."],
           ["Day 3","Visit Kalapathar Beach, ferry back to Port Blair, check-in, evening free."],
           ["Day 4","Breakfast & check-out, transfer to airport, departure."]
         ]},
-      { name:"Andaman Island Escape", duration:"4N/5D", adult:20500, couple:41000, childBed:14500, childNoBed:9500, extraBed:18500,
+      { name:"Andaman Island Escape", duration:"4N/5D", imgKey:"andaman_escape",     
         itin:[
           ["Day 1","Arrival in Port Blair, check-in, visit Cellular Jail & Light and Sound Show."],
           ["Day 2","Ferry to Swaraj Dweep (Havelock), check-in, Radhanagar Beach."],
@@ -582,7 +631,7 @@ const DOMESTIC = [
           ["Day 4","Ferry to Shaheed Dweep (Neil Island), check-in, Laxmanpur Beach & Natural Bridge, sunset."],
           ["Day 5","Ferry back to Port Blair, transfer to airport, departure."]
         ]},
-      { name:"Andaman Grand Escape", duration:"5N/6D", imgKey:"andaman_grand", adult:24500, couple:49000, childBed:17000, childNoBed:11000, extraBed:22000,
+      { name:"Andaman Grand Escape", duration:"5N/6D", imgKey:"andaman_grand",     
         itin:[
           ["Day 1","Arrival in Port Blair, check-in, visit Cellular Jail. Evening Light & Sound Show."],
           ["Day 2","Ferry to Swaraj Dweep, check-in, Radhanagar Beach & sunset."],
@@ -600,25 +649,25 @@ const INTERNATIONAL = [
     region: "Bali",
     note: "Ubud culture, Nusa Penida and south Bali beaches.",
     packages: [
-      { name:"Bali Highlights", duration:"3N/4D", imgKey:"bali_highlight", adult:25500, couple:51000,
+      { name:"Bali Highlights", duration:"3N/4D", imgKey:"bali_highlight",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening free."],
               ["Day 2","Ubud & Kintamani — Tegalalang Rice Terrace, Tirta Empul Temple, Kintamani Volcano viewpoint, Ubud Market."],
               ["Day 3","Ulun Danu Beratan Temple, scenic viewpoints, Tanah Lot Temple & sunset."],
               ["Day 4","Breakfast, check-out, airport transfer & departure."]]},
-      { name:"Bali Explorer", duration:"4N/5D", imgKey:"bali_explorer", adult:31500, couple:63000,
+      { name:"Bali Explorer", duration:"4N/5D", imgKey:"bali_explorer",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening leisure."],
               ["Day 2","Tegalalang Rice Terrace, Tirta Empul Temple, Kintamani Volcano & Lake Batur, Ubud Market."],
               ["Day 3","Speedboat to Nusa Penida — Kelingking Beach, Angel's Billabong & Broken Beach."],
               ["Day 4","Padang Padang Beach, Uluwatu Temple, Kecak Dance, sunset dinner at Jimbaran Bay."],
               ["Day 5","Breakfast, check-out, airport transfer."]]},
-      { name:"Bali Honeymoon Escape", duration:"5N/6D", imgKey:"bali_honeymoon", adult:37500, couple:75000,
+      { name:"Bali Honeymoon Escape", duration:"5N/6D", imgKey:"bali_honeymoon",  
         itin:[["Day 1","Private airport transfer, hotel check-in, evening leisure."],
               ["Day 2","Tegalalang Rice Terrace, Tirta Empul Temple, Ubud scenic spots, optional romantic dinner."],
               ["Day 3","Full-day Nusa Penida — Kelingking Beach, Broken Beach & Angel's Billabong."],
               ["Day 4","Uluwatu Temple, Padang Padang Beach, Kecak Dance & sunset, romantic Jimbaran Bay dinner."],
               ["Day 5","Morning free, optional water activities at Nusa Dua, local markets."],
               ["Day 6","Breakfast, check-out, airport transfer & departure."]]},
-      { name:"Bali Grand Escape", duration:"6N/7D", imgKey:"bali_grand", adult:43500, couple:87000,
+      { name:"Bali Grand Escape", duration:"6N/7D", imgKey:"bali_grand",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening leisure."],
               ["Day 2","Tegalalang Rice Terrace, Tirta Empul Temple, Kintamani Volcano viewpoint, Ubud Market."],
               ["Day 3","Sacred Monkey Forest, Ubud Palace, scenic waterfalls/rice terraces."],
@@ -632,25 +681,25 @@ const INTERNATIONAL = [
     region: "Dubai",
     note: "City icons, desert safari and an Abu Dhabi day trip.",
     packages: [
-      { name:"Dubai Highlights", duration:"3N/4D", imgKey:"dubai_highlight", adult:31500, couple:63000,
+      { name:"Dubai Highlights", duration:"3N/4D", imgKey:"dubai_highlight",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening free."],
               ["Day 2","Burj Khalifa & Dubai Mall, Burj Al Arab & Jumeirah Beach photo stop, Palm Jumeirah & Atlantis."],
               ["Day 3","Morning free, afternoon Desert Safari — dune bashing, camel ride, sunset, BBQ dinner with entertainment."],
               ["Day 4","Breakfast, check-out, airport transfer & departure."]]},
-      { name:"Dubai Explorer", duration:"4N/5D", imgKey:"dubai_explorer", adult:36500, couple:73000,
+      { name:"Dubai Explorer", duration:"4N/5D", imgKey:"dubai_explorer",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening leisure."],
               ["Day 2","Burj Khalifa & Dubai Mall, Jumeirah Beach & Burj Al Arab, Palm Jumeirah drive, Dubai Marina."],
               ["Day 3","Morning free, afternoon Desert Safari with BBQ dinner & live shows."],
               ["Day 4","Dubai Creek, Gold Souk & Spice Souk, evening Marina Dhow Cruise with dinner."],
               ["Day 5","Breakfast, check-out, airport transfer & departure."]]},
-      { name:"Dubai Premium Escape", duration:"5N/6D", imgKey:"dubai_premium", adult:42500, couple:85000,
+      { name:"Dubai Premium Escape", duration:"5N/6D", imgKey:"dubai_premium",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening leisure."],
               ["Day 2","Burj Khalifa & Dubai Mall, Jumeirah Beach & Burj Al Arab, Palm Jumeirah & Atlantis."],
               ["Day 3","Full-day Abu Dhabi trip — Sheikh Zayed Grand Mosque, Emirates Palace & Corniche."],
               ["Day 4","Morning free, afternoon Desert Safari with BBQ dinner & entertainment."],
               ["Day 5","Dubai Marina & JBR Walk, Dubai Creek & souks, evening Dhow Cruise with dinner."],
               ["Day 6","Breakfast, check-out, airport transfer & departure."]]},
-      { name:"Dubai Grand Escape", duration:"6N/7D", adult:48500, couple:97000,
+      { name:"Dubai Grand Escape", duration:"6N/7D",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening leisure."],
               ["Day 2","Burj Khalifa & Dubai Mall, Jumeirah Beach & Burj Al Arab, Palm Jumeirah & Atlantis."],
               ["Day 3","Full-day Abu Dhabi — Sheikh Zayed Grand Mosque, Corniche & Emirates Palace area."],
@@ -664,26 +713,26 @@ const INTERNATIONAL = [
     region: "Thailand",
     note: "Bangkok, Pattaya, Phuket & Krabi combinations.",
     packages: [
-      { name:"Bangkok + Pattaya Escape", duration:"4N/5D", imgKey:"bangkok_pattaya", adult:24999, couple:49998,
+      { name:"Bangkok + Pattaya Escape", duration:"4N/5D", imgKey:"bangkok_pattaya",  
         itin:[["Day 1","Arrival Bangkok, private transfer to Pattaya, check-in, evening Pattaya Beach/Walking Street."],
               ["Day 2","Full-day Coral Island speedboat excursion, beach time, evening free/optional Alcazar Show."],
               ["Day 3","Check-out from Pattaya, Gems Gallery en route, transfer to Bangkok, evening shopping."],
               ["Day 4","Wat Traimit (Golden Buddha), Wat Pho/Wat Arun, shopping areas, evening Chao Phraya Dinner Cruise."],
               ["Day 5","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Phuket + Krabi Escape", duration:"4N/5D", imgKey:"phuket_krabi", adult:29999, couple:59998,
+      { name:"Phuket + Krabi Escape", duration:"4N/5D", imgKey:"phuket_krabi",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening leisure."],
               ["Day 2","Full-day Phi Phi Island excursion — beaches, viewpoints, swimming/snorkelling."],
               ["Day 3","Transfer to Krabi, check-in, evening at Ao Nang."],
               ["Day 4","Full-day Krabi 4-Island boat tour, swimming & beach activities."],
               ["Day 5","Breakfast, check-out, transfer to Krabi Airport, departure."]]},
-      { name:"Bangkok + Pattaya + Phuket", duration:"5N/6D", imgKey:"bangkok_pattaya_phuket", adult:34999, couple:69998,
+      { name:"Bangkok + Pattaya + Phuket", duration:"5N/6D", imgKey:"bangkok_pattaya_phuket",  
         itin:[["Day 1","Arrival Bangkok, transfer to Pattaya, check-in, evening leisure."],
               ["Day 2","Coral Island speedboat tour, beach activities, return to Pattaya."],
               ["Day 3","Return to Bangkok, visit Golden Buddha/city attractions, evening shopping."],
               ["Day 4","Domestic flight to Phuket, check-in, evening free."],
               ["Day 5","Full-day Phi Phi Island excursion, optional snorkelling."],
               ["Day 6","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Best of Thailand", duration:"6N/7D", imgKey:"thailand_best", adult:42999, couple:85998,
+      { name:"Best of Thailand", duration:"6N/7D", imgKey:"thailand_best",  
         itin:[["Day 1","Arrival Phuket, hotel check-in, evening leisure."],
               ["Day 2","Full-day Phi Phi Island tour, optional snorkelling."],
               ["Day 3","Fly to Bangkok, continue to Pattaya, evening leisure."],
@@ -697,18 +746,18 @@ const INTERNATIONAL = [
     region: "Singapore",
     note: "3-Star category, Sentosa & Universal Studios options.",
     packages: [
-      { name:"Singapore Highlights – 3 Star", duration:"3N/4D", imgKey:"singapore_highlights", adult:34999, couple:69998,
+      { name:"Singapore Highlights – 3 Star", duration:"3N/4D", imgKey:"singapore_highlights",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Marina Bay & Merlion Park."],
               ["Day 2","Merlion Park & Civic District, Little India & Chinatown, Gardens by the Bay, evening Orchard Road."],
               ["Day 3","Full-day Sentosa Island — Wings of Time, Siloso Beach."],
               ["Day 4","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Singapore Explorer – 3 Star", duration:"4N/5D", imgKey:"singapore_explorer", adult:42999, couple:85998,
+      { name:"Singapore Explorer – 3 Star", duration:"4N/5D", imgKey:"singapore_explorer",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Marina Bay & Merlion Park."],
               ["Day 2","Merlion Park & Civic District, Chinatown & Little India, Gardens by the Bay, Orchard Road."],
               ["Day 3","Full-day Sentosa Island, Siloso Beach, evening Wings of Time."],
               ["Day 4","Full-day Universal Studios Singapore."],
               ["Day 5","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Singapore Grand Escape – 3 Star", duration:"5N/6D", imgKey:"singapore_grand", adult:49999, couple:99998,
+      { name:"Singapore Grand Escape – 3 Star", duration:"5N/6D", imgKey:"singapore_grand",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Marina Bay & Merlion Park."],
               ["Day 2","Civic District & Merlion Park, Chinatown & Little India, Gardens by the Bay, Orchard Road."],
               ["Day 3","Full-day Universal Studios Singapore."],
@@ -721,20 +770,20 @@ const INTERNATIONAL = [
     region: "Vietnam",
     note: "Hanoi, Halong Bay, Da Nang, Hoi An & Ho Chi Minh — 3-Star.",
     packages: [
-      { name:"Hanoi City Escape", duration:"4N/5D", imgKey:"hanoi_city", adult:32999, couple:65998,
+      { name:"Hanoi City Escape", duration:"4N/5D", imgKey:"hanoi_city",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Hanoi Old Quarter."],
               ["Day 2","Ho Chi Minh Mausoleum Complex, One Pillar Pagoda & Temple of Literature, Hoan Kiem Lake."],
               ["Day 3","Train Street, traditional streets & local markets, optional Water Puppet Show."],
               ["Day 4","Free day for shopping and exploring Hanoi."],
               ["Day 5","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Hanoi + Da Nang Escape", duration:"5N/6D", imgKey:"hanoi_danang", adult:38999, couple:77998,
+      { name:"Hanoi + Da Nang Escape", duration:"5N/6D", imgKey:"hanoi_danang",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Hanoi Old Quarter."],
               ["Day 2","Ho Chi Minh Mausoleum Complex, Temple of Literature, Hoan Kiem Lake."],
               ["Day 3","Flight to Da Nang, check-in, evening My Khe Beach & city."],
               ["Day 4","Full-day Ba Na Hills — Golden Bridge & French Village."],
               ["Day 5","Marble Mountains, local attractions & beaches."],
               ["Day 6","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Hanoi + Halong Bay + Da Nang", duration:"6N/7D", imgKey:"hanoi_halong_danang", adult:44999, couple:89998,
+      { name:"Hanoi + Halong Bay + Da Nang", duration:"6N/7D", imgKey:"hanoi_halong_danang",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Old Quarter."],
               ["Day 2","Ho Chi Minh Mausoleum Complex, Temple of Literature & One Pillar Pagoda, Hoan Kiem Lake."],
               ["Day 3","Transfer to Halong Bay, board overnight cruise, explore limestone islands & caves."],
@@ -742,7 +791,7 @@ const INTERNATIONAL = [
               ["Day 5","Flight to Da Nang, check-in, evening My Khe Beach."],
               ["Day 6","Ba Na Hills & Golden Bridge, French Village."],
               ["Day 7","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Hanoi + Da Nang + Hoi An", duration:"6N/7D", imgKey:"hoi_an", adult:46999, couple:93998,
+      { name:"Hanoi + Da Nang + Hoi An", duration:"6N/7D", imgKey:"hoi_an",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Hanoi Old Quarter."],
               ["Day 2","Ho Chi Minh Mausoleum Complex, Temple of Literature & One Pillar Pagoda, Hoan Kiem Lake."],
               ["Day 3","Flight to Da Nang, check-in, evening My Khe Beach."],
@@ -750,7 +799,7 @@ const INTERNATIONAL = [
               ["Day 5","Marble Mountains, Hoi An Ancient Town, lantern-lit evening."],
               ["Day 6","Free morning for beach relaxation, local markets, optional café/spa."],
               ["Day 7","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Hanoi + Da Nang + Ho Chi Minh", duration:"7N/8D", imgKey:"hanoi_danang_hcm", adult:52999, couple:105998,
+      { name:"Hanoi + Da Nang + Ho Chi Minh", duration:"7N/8D", imgKey:"hanoi_danang_hcm",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Old Quarter."],
               ["Day 2","Ho Chi Minh Mausoleum Complex, Temple of Literature & One Pillar Pagoda, Hoan Kiem Lake."],
               ["Day 3","Train Street, local markets, optional Water Puppet Show."],
@@ -759,7 +808,7 @@ const INTERNATIONAL = [
               ["Day 6","Flight to Ho Chi Minh City, check-in, evening Ben Thanh Market."],
               ["Day 7","Independence Palace, Central Post Office & Notre-Dame area, War Remnants Museum."],
               ["Day 8","Breakfast, check-out, airport transfer, departure."]]},
-      { name:"Vietnam Grand Tour", duration:"8N/9D", adult:59999, couple:119998,
+      { name:"Vietnam Grand Tour", duration:"8N/9D",  
         itin:[["Day 1","Airport pickup, hotel check-in, evening Hanoi Old Quarter."],
               ["Day 2","Ho Chi Minh Mausoleum Complex, Temple of Literature & One Pillar Pagoda, Hoan Kiem Lake."],
               ["Day 3","Transfer to Halong Bay, board overnight cruise, explore islands & caves."],
@@ -775,7 +824,7 @@ const INTERNATIONAL = [
     region: "Europe",
     note: "Paris, Switzerland & Italy progression — 3-Star.",
     packages: [
-      { name:"Paris Highlights", duration:"6N/7D", imgKey:"paris_highlight", adult:149999, couple:299998,
+      { name:"Paris Highlights", duration:"6N/7D", imgKey:"paris_highlight",  
         itin:[["Day 1","Arrival in Paris, airport pickup, hotel check-in, evening free."],
               ["Day 2","Eiffel Tower, Arc de Triomphe, Champs-Élysées, Place de la Concorde, Seine River area."],
               ["Day 3","Louvre Museum, Montmartre & Sacré-Cœur."],
@@ -783,7 +832,7 @@ const INTERNATIONAL = [
               ["Day 5","Full-day Disneyland Paris."],
               ["Day 6","Free day for shopping & exploring Paris."],
               ["Day 7","Breakfast, check-out, airport transfer."]]},
-      { name:"Switzerland Escape", duration:"6N/7D", imgKey:"switzerland_escape", adult:159999, couple:319998,
+      { name:"Switzerland Escape", duration:"6N/7D", imgKey:"switzerland_escape",  
         itin:[["Day 1","Arrive Zurich, transfer to Lucerne, check-in, evening free."],
               ["Day 2","Lucerne — Chapel Bridge, Lion Monument, Old Town, Mt. Pilatus excursion (weather permitting)."],
               ["Day 3","Travel to Interlaken, check-in, evening free."],
@@ -791,7 +840,7 @@ const INTERNATIONAL = [
               ["Day 5","Free time in Interlaken, optional mountain/adventure activities."],
               ["Day 6","Transfer to Zurich, Old Town, Bahnhofstrasse & Lake Zurich."],
               ["Day 7","Breakfast, transfer to Zurich Airport, departure."]]},
-      { name:"Paris + Switzerland Explorer", duration:"7N/8D", imgKey:"paris_switzerland", adult:179999, couple:359998,
+      { name:"Paris + Switzerland Explorer", duration:"7N/8D", imgKey:"paris_switzerland",  
         itin:[["Day 1","Arrival in Paris, hotel transfer, evening free."],
               ["Day 2","Eiffel Tower, Arc de Triomphe, Champs-Élysées, Seine River."],
               ["Day 3","Louvre Museum, Montmartre & Sacré-Cœur."],
@@ -800,7 +849,7 @@ const INTERNATIONAL = [
               ["Day 6","Scenic journey to Interlaken, check-in."],
               ["Day 7","Full-day Jungfraujoch excursion."],
               ["Day 8","Breakfast, transfer for departure."]]},
-      { name:"Italy + Switzerland Escape", duration:"8N/9D", imgKey:"italy_switzerland", adult:194999, couple:389998,
+      { name:"Italy + Switzerland Escape", duration:"8N/9D", imgKey:"italy_switzerland",  
         itin:[["Day 1","Arrive Milan, hotel transfer, evening free."],
               ["Day 2","Duomo area, Galleria Vittorio Emanuele II, Sforza Castle."],
               ["Day 3","Travel to Venice, evening exploration."],
@@ -810,7 +859,7 @@ const INTERNATIONAL = [
               ["Day 7","Transfer to Interlaken, scenic countryside."],
               ["Day 8","Full-day Jungfraujoch — Top of Europe."],
               ["Day 9","Breakfast, transfer for departure."]]},
-      { name:"Paris + Switzerland + Italy", duration:"9N/10D", imgKey:"paris_switzerland_italy", adult:214999, couple:429998,
+      { name:"Paris + Switzerland + Italy", duration:"9N/10D", imgKey:"paris_switzerland_italy",  
         itin:[["Day 1","Arrival in Paris, hotel transfer, evening free."],
               ["Day 2","Eiffel Tower, Arc de Triomphe, Champs-Élysées, Seine River."],
               ["Day 3","Louvre Museum, Montmartre & Sacré-Cœur."],
@@ -821,7 +870,7 @@ const INTERNATIONAL = [
               ["Day 8","Travel to Venice, evening exploration."],
               ["Day 9","St. Mark's Square, Rialto Bridge, Grand Canal, optional Gondola Ride."],
               ["Day 10","Breakfast, transfer for departure."]]},
-      { name:"Grand Europe Highlights", duration:"10N/11D", imgKey:"europe_region", adult:234999, couple:469998,
+      { name:"Grand Europe Highlights", duration:"10N/11D", imgKey:"europe_region",  
         itin:[["Day 1","Arrival in Paris, hotel transfer, evening free."],
               ["Day 2","Eiffel Tower, Arc de Triomphe, Champs-Élysées."],
               ["Day 3","Louvre Museum, Montmartre & Sacré-Cœur, evening shopping."],
@@ -839,18 +888,18 @@ const INTERNATIONAL = [
     region: "Maldives",
     note: "Resort-based escapes — 3-Star resort category.",
     packages: [
-      { name:"Maldives Escape", duration:"3N/4D", imgKey:"maldives_region", adult:44999, couple:89998,
+      { name:"Maldives Escape", duration:"3N/4D", imgKey:"maldives_region",  
         itin:[["Day 1","Malé Airport arrival, speedboat/seaplane transfer to resort, check-in, evening leisure."],
               ["Day 2","Beach, pool & resort activities. Optional snorkelling, kayaking or dolphin cruise."],
               ["Day 3","Relaxed day at resort, lagoon & snorkelling, sunset views."],
               ["Day 4","Breakfast, check-out, transfer to Malé Airport, departure."]]},
-      { name:"Maldives Island Explorer", duration:"4N/5D", imgKey:"maldives_region", adult:54999, couple:109998,
+      { name:"Maldives Island Explorer", duration:"4N/5D", imgKey:"maldives_region",  
         itin:[["Day 1","Arrive Malé Airport, transfer to island resort, check-in."],
               ["Day 2","Full day at resort — optional snorkelling, kayaking, scuba diving."],
               ["Day 3","Island-hopping/local island excursion, Maldivian culture & turquoise lagoons."],
               ["Day 4","Free day at resort, spa or optional sunset cruise."],
               ["Day 5","Breakfast, check-out, transfer to Malé Airport, departure."]]},
-      { name:"Maldives Honeymoon Escape", duration:"5N/6D", imgKey:"maldives_region", adult:69999, couple:139998,
+      { name:"Maldives Honeymoon Escape", duration:"5N/6D", imgKey:"maldives_region",  
         itin:[["Day 1","Arrival, resort transfer, romantic evening at resort."],
               ["Day 2","Private beach time, lagoon activities, optional couple spa."],
               ["Day 3","Snorkelling/guided lagoon excursion, evening sunset cruise."],
@@ -863,7 +912,7 @@ const INTERNATIONAL = [
 
 const HERO_COPY = {
   domestic:{ kicker:"VAGABOND ESCAPES · NOIDA", h:"Pack your bags — pan-India getaways, planned end to end.",
-    sub:"Mountains, backwaters, islands and everything between — fixed itineraries, transparent pricing, and a team that answers on WhatsApp." },
+    sub:"Mountains, backwaters, islands and everything between — fixed itineraries, personalised quotes, and a team that answers quickly on WhatsApp." },
   international:{ kicker:"VAGABOND ESCAPES · WORLDWIDE", h:"Passport ready? Your next country is one WhatsApp message away.",
     sub:"Bali, Dubai, Thailand, Singapore, Vietnam, Europe & Maldives — curated itineraries with visa, flight & hotel help." }
 };
@@ -893,20 +942,45 @@ function buildChips(){
 }
 
 function renderRateTable(p){
-  if(p.couple !== undefined && p.childBed === undefined){
-    // international style: adult PP + couple only
-    return `<table class="rate-table"><tr><th>Adult (PP)</th><th>Couple</th></tr>
-      <tr><td>${fmt(p.adult)}</td><td>${fmt(p.couple)}</td></tr></table>`;
+  return `<div class="enquiry-price-note">
+    💬 Request a personalised quote based on your travel dates, group size and hotel preference.
+  </div>`;
+}
+
+// Add practical detail to every supplied day without inventing extra destinations.
+function detailedDayText(dayText){
+  const raw = String(dayText || '').trim();
+  const t = raw.toLowerCase();
+  let extra = '';
+  if (/departure|airport|railway station|drop at|check-out|check out|onward journey/.test(t)) {
+    extra = 'Keep your luggage ready and allow a comfortable buffer for the transfer. The pickup/drop timing will be coordinated around your confirmed travel schedule and local traffic conditions.';
+  } else if (/arrival|pickup|pick-up|drive to|→|scenic drive|transfer|check-in|check in/.test(t)) {
+    extra = 'After reaching the destination, complete hotel check-in and take time to freshen up. En-route breaks and arrival time can vary with traffic, weather and the starting point.';
+  } else if (/leisure|free time|mall road|market|shopping|evening free|café|cafe/.test(t)) {
+    extra = 'This part of the day is kept flexible for a relaxed walk, local food, shopping or rest at your own pace. Personal purchases and optional activities are not assumed to be included in the package.';
+  } else if (/beach|island|backwater|lake|boating|cruise|snorkel|water sport|resort|lagoon/.test(t)) {
+    extra = 'Enjoy the scenery at a comfortable pace and keep time for photographs and breaks. Water-based activities, cruises and boat rides depend on availability, weather, local rules and the final package inclusions.';
+  } else {
+    extra = 'Plan the visits at an easy pace, keeping time for photographs, short breaks and local conditions. Attraction opening hours, entry tickets and on-ground transport will be confirmed with the final travel plan.';
   }
-  let rows = `<tr><th>Adult</th><th>Child w/ Bed</th><th>Child w/o Bed</th><th>Extra Bed</th></tr>
-    <tr><td>${fmt(p.adult)}</td><td>${fmt(p.childBed)}</td><td>${fmt(p.childNoBed)}</td><td>${fmt(p.extraBed)}</td></tr>`;
-  return `<table class="rate-table">${rows}</table>` +
-    (p.couple ? `<div style="margin-top:8px;font-size:12.5px;color:#5b6b64;">Couple package: <b style="color:var(--rust);">${fmt(p.couple)}</b></div>` : "");
+  return `${raw} ${extra}`;
+}
+
+function openEnquiry(packageName, duration, region){
+  document.getElementById('selectedPackage').textContent =
+    `${packageName} · ${duration} · ${region}`;
+  document.getElementById('enquiryModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('leadName').focus(), 80);
+}
+
+function closeEnquiry(){
+  document.getElementById('enquiryModal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 function pkgCard(region, p, idx){
   const uid = region.replace(/\s+/g,'') + idx;
-  const waText = encodeURIComponent(`Hi Vagabond Escapes, I'm interested in the "${p.name}" (${p.duration}) package. Please share full details.`);
   const photoHtml = p.imgKey && PHOTOS[p.imgKey]
     ? `<div class="pkg-photo"><img src="${PHOTOS[p.imgKey]}" alt="${p.name}" loading="lazy"></div>`
     : "";
@@ -917,19 +991,16 @@ function pkgCard(region, p, idx){
       <span class="pkg-duration">${p.duration}</span>
       <h3>${p.name}</h3>
       <div class="pkg-price-row">
-        <span class="pkg-price">${fmt(p.adult)}</span>
-        <span class="pkg-price-label">per person</span>
-        ${p.couple ? `<span class="pkg-couple">Couple<br>${fmt(p.couple)}</span>` : ""}
+        <span class="pkg-enquire-note">✨ Personalised package quote on request</span>
       </div>
-      <button class="toggle-itin" onclick="document.getElementById('itin-${uid}').classList.toggle('open')">View Itinerary &amp; Rates</button>
+      <button class="toggle-itin" onclick="document.getElementById('itin-${uid}').classList.toggle('open')">View Itinerary</button>
+      <button class="enquiry-btn" onclick="openEnquiry(${JSON.stringify(p.name)}, ${JSON.stringify(p.duration)}, ${JSON.stringify(region)})">Enquire for Best Quote</button>
     </div>
     <div class="itin-panel" id="itin-${uid}">
-      ${p.itin.map(d=>`<div class="itin-day"><b>${d[0]}</b>${d[1]}</div>`).join("")}
+      ${p.itin.map(d=>`<div class="itin-day"><b>${d[0]}</b><p>${detailedDayText(d[1])}</p></div>`).join("")}
       ${renderRateTable(p)}
       <div class="itin-cta">
-        <a href="https://wa.me/919773669645?text=${waText}" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-        <a class="alt" href="mailto:vagabondescapesinfo@gmail.com?subject=Enquiry%20-%20${encodeURIComponent(p.name)}&body=${waText}">Email Enquiry</a>
-
+        <a href="#" onclick="openEnquiry(${JSON.stringify(p.name)}, ${JSON.stringify(p.duration)}, ${JSON.stringify(region)}); return false;">Enquire for Best Quote</a>
       </div>
     </div>
   </div>`;
@@ -1160,6 +1231,66 @@ document.getElementById('searchInput').addEventListener('keyup', (e)=>{ if(e.key
 document.getElementById('upiLink').addEventListener('click', function(e){
   e.preventDefault();
   window.location.href = "upi://pay?pa=YOUR_UPI_ID@bank&pn=Vagabond%20Escapes&cu=INR";
+});
+
+
+// ================= LEAD / ENQUIRY HANDLER =================
+const enquiryModal = document.getElementById('enquiryModal');
+
+enquiryModal.addEventListener('click', (e) => {
+  if(e.target === enquiryModal) closeEnquiry();
+});
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && enquiryModal.classList.contains('open')) closeEnquiry();
+});
+
+document.getElementById('enquiryForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const packageName = document.getElementById('selectedPackage').textContent;
+  const name = document.getElementById('leadName').value.trim();
+  const phone = document.getElementById('leadPhone').value.trim();
+  const date = document.getElementById('leadDate').value || 'Flexible';
+  const adults = document.getElementById('leadAdults').value || '2';
+  const children = document.getElementById('leadChildren').value || '0';
+  const budget = document.getElementById('leadBudget').value.trim() || 'Not specified';
+  const message = document.getElementById('leadMessage').value.trim() || 'No additional requirements';
+
+  const digits = phone.replace(/\D/g,'');
+  if(digits.length < 10){
+    alert('Please enter a valid WhatsApp/mobile number.');
+    return;
+  }
+
+  const text =
+`NEW WEBSITE ENQUIRY
+
+Package: ${packageName}
+Name: ${name}
+WhatsApp: ${phone}
+Travel Date: ${date}
+Adults: ${adults}
+Children: ${children}
+Budget: ${budget}
+Requirements: ${message}
+
+Please share the best available package price and details.`;
+
+  // Conversion tracking hooks — safe even if analytics is added later.
+  if(typeof gtag === 'function'){
+    gtag('event', 'generate_lead', {
+      event_category: 'Enquiry',
+      event_label: packageName,
+      value: 1
+    });
+  }
+
+  window.open('https://wa.me/919773669645?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  closeEnquiry();
+  this.reset();
+  document.getElementById('leadAdults').value = '2';
+  document.getElementById('leadChildren').value = '0';
 });
 
 render();
