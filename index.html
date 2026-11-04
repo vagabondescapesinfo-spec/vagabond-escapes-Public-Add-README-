@@ -259,8 +259,35 @@ header.site{
   justify-content:center;font-size:26px;box-shadow:0 8px 22px rgba(0,0,0,.3);z-index:60;
 }
 </style>
+<style>
+
+/* ================= VAGABOND ESCAPES FESTIVE LAYER (add-on) ================= */
+#ve-festive-layer{position:relative;z-index:55;pointer-events:none;height:0}
+#ve-toran{position:fixed;top:0;left:0;width:100%;height:43px;z-index:70;pointer-events:none;opacity:.96;
+ background:radial-gradient(ellipse at 8% 0%,#e3a83b 0 2px,transparent 3px),radial-gradient(ellipse at 22% 0%,#c1502e 0 2px,transparent 3px),radial-gradient(ellipse at 36% 0%,#e3a83b 0 2px,transparent 3px),radial-gradient(ellipse at 50% 0%,#c1502e 0 2px,transparent 3px),radial-gradient(ellipse at 64% 0%,#e3a83b 0 2px,transparent 3px),radial-gradient(ellipse at 78% 0%,#c1502e 0 2px,transparent 3px),radial-gradient(ellipse at 92% 0%,#e3a83b 0 2px,transparent 3px)}
+#ve-toran:before{content:"";position:absolute;left:-2%;right:-2%;top:-27px;height:55px;border-bottom:3px solid #d89b31;border-radius:0 0 50% 50%;filter:drop-shadow(0 2px 3px #7b3d16)}
+#ve-toran:after{content:"✦  ❋  ✦  ❋  ✦  ❋  ✦  ❋  ✦  ❋  ✦  ❋  ✦";position:absolute;top:5px;left:0;width:100%;text-align:center;letter-spacing:clamp(8px,3vw,34px);font-size:18px;color:#e3a83b;text-shadow:0 1px 3px #713b13}
+#ve-diya-left,#ve-diya-right{position:fixed;bottom:12px;z-index:65;pointer-events:none;font-size:clamp(30px,4vw,48px);filter:drop-shadow(0 0 8px rgba(255,166,40,.65));animation:ve-diya-glow 1.8s ease-in-out infinite alternate}
+#ve-diya-left{left:12px}#ve-diya-right{right:12px;animation-delay:.8s}
+@keyframes ve-diya-glow{from{transform:translateY(0) scale(.96);filter:drop-shadow(0 0 5px rgba(255,166,40,.4))}to{transform:translateY(-4px) scale(1.04);filter:drop-shadow(0 0 13px rgba(255,166,40,.9))}}
+#ve-festive-note{position:fixed;right:18px;top:calc(var(--ve-header-bottom, 90px) + 12px);z-index:69;max-width:min(310px,calc(100vw - 36px));padding:10px 15px;border:1px solid rgba(227,168,59,.7);border-radius:12px;background:rgba(14,59,67,.96);color:#fff7e8;box-shadow:0 8px 24px rgba(0,0,0,.2);font:600 13px/1.45 'Work Sans',sans-serif;pointer-events:auto;text-align:center}
+#ve-festive-note button{margin-left:9px;border:0;background:transparent;color:#f5c66c;font-size:18px;line-height:1;vertical-align:middle;padding:0 2px}
+#ve-festive-layer.ve-christmas #ve-toran:after{content:"✦  ❄  ✦  ❄  ✦  ❄  ✦  ❄  ✦  ❄  ✦";color:#e7f5ff}
+#ve-festive-layer.ve-newyear #ve-toran:after{content:"✦  ✧  ✦  ✧  ✦  ✧  ✦  ✧  ✦  ✧  ✦";color:#f5d27c}
+#ve-festive-layer.ve-holi #ve-toran:after{content:"●  ✿  ●  ✿  ●  ✿  ●  ✿  ●  ✿  ●";color:#f4a6bd}
+#ve-festive-layer.ve-christmas #ve-diya-left,#ve-festive-layer.ve-christmas #ve-diya-right{filter:drop-shadow(0 0 8px rgba(150,210,255,.7))}
+@media(max-width:600px){#ve-toran{height:32px}#ve-toran:after{font-size:13px;letter-spacing:7px}#ve-diya-left,#ve-diya-right{bottom:8px;font-size:30px}#ve-diya-left{left:7px}#ve-diya-right{right:7px}#ve-festive-note{top:105px;right:10px;font-size:11px;padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){#ve-diya-left,#ve-diya-right{animation:none}}
+/* ================= END FESTIVE LAYER STYLES ================= */
+
+</style>
 </head>
 <body>
+
+<!-- Festive decorations are a separate visual layer; original site sections remain unchanged. -->
+<div id="ve-festive-layer" aria-hidden="true"><div id="ve-toran"></div><div id="ve-diya-left">🪔</div><div id="ve-diya-right">🪔</div></div>
+<div id="ve-festive-note" role="status" aria-live="polite" hidden><span id="ve-festive-message"></span><button type="button" aria-label="Dismiss festive greeting" id="ve-festive-close">×</button></div>
+
 
 <div class="topbar">
   <div class="wrap">
@@ -1325,5 +1352,49 @@ if(HERO_SLIDES.length){
   }
 }
 </script>
+
+<script>
+/* Automatic seasonal decoration. This script only adds decorative elements. */
+(function(){
+  const now = new Date();
+  const month = now.getMonth()+1;
+  const day = now.getDate();
+  const year = now.getFullYear();
+  let theme = '', greeting = '';
+  // Diwali dates (India): update this small calendar when future official dates are announced.
+  const diwaliDates = {2026:'11-08',2027:'10-29',2028:'10-17',2029:'11-05',2030:'10-26'};
+  const holiDates = {2027:'03-22',2028:'03-11',2029:'03-01',2030:'03-20'};
+  const inWindow = (target, before, after) => {
+    const start = new Date(target.getTime()-before*86400000);
+    const end = new Date(target.getTime()+after*86400000);
+    const today = new Date(year,month-1,day);
+    return today>=new Date(start.getFullYear(),start.getMonth(),start.getDate()) && today<=new Date(end.getFullYear(),end.getMonth(),end.getDate());
+  };
+  const dateFrom = (value) => {const [m,d]=value.split('-').map(Number);return new Date(year,m-1,d);};
+  if(diwaliDates[year] && inWindow(dateFrom(diwaliDates[year]),7,4)){
+    theme='diwali'; greeting='Wishing you and your family a joyful and prosperous Diwali! 🪔 With warm wishes from Vagabond Escapes.';
+  } else if(month===12 && day>=15 && day<=27){
+    theme='christmas'; greeting='Season’s Greetings! 🎄 Plan your next beautiful escape with Vagabond Escapes.';
+  } else if((month===12 && day>=28) || (month===1 && day<=3)){
+    theme='newyear'; greeting='Happy New Year! ✨ Let’s make new travel memories.';
+  } else if(holiDates[year] && inWindow(dateFrom(holiDates[year]),2,1)){
+    theme='holi'; greeting='Wishing you a bright and joyful Holi! 🌸 May your celebrations be filled with colour, happiness and beautiful new memories.';
+  }
+  if(!theme) return;
+  const layer=document.getElementById('ve-festive-layer');
+  if(!layer) return;
+  layer.classList.add('ve-'+theme);
+  const left=document.getElementById('ve-diya-left');
+  const right=document.getElementById('ve-diya-right');
+  if(theme==='christmas'){left.textContent='🎄';right.textContent='❄️';}
+  else if(theme==='newyear'){left.textContent='✨';right.textContent='🎉';}
+  else if(theme==='holi'){left.textContent='🌸';right.textContent='🎨';}
+  const note=document.getElementById('ve-festive-note');
+  const msg=document.getElementById('ve-festive-message');
+  const close=document.getElementById('ve-festive-close');
+  if(note && msg){msg.textContent=greeting;note.hidden=false;close.addEventListener('click',()=>{note.hidden=true;});}
+})();
+</script>
+
 </body>
 </html>
