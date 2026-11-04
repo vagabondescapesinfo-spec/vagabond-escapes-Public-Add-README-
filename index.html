@@ -258,41 +258,43 @@ header.site{
   width:56px;height:56px;border-radius:50%;display:flex;align-items:center;
   justify-content:center;font-size:26px;box-shadow:0 8px 22px rgba(0,0,0,.3);z-index:60;
 }
-</style>
-<style>
 
-/* ================= VAGABOND ESCAPES FESTIVE LAYER (add-on) ================= */
-#ve-festive-layer{position:relative;z-index:55;pointer-events:none;height:0}
-#ve-toran{position:fixed;top:0;left:0;width:100%;height:43px;z-index:70;pointer-events:none;opacity:.96;
- background:radial-gradient(ellipse at 8% 0%,#e3a83b 0 2px,transparent 3px),radial-gradient(ellipse at 22% 0%,#c1502e 0 2px,transparent 3px),radial-gradient(ellipse at 36% 0%,#e3a83b 0 2px,transparent 3px),radial-gradient(ellipse at 50% 0%,#c1502e 0 2px,transparent 3px),radial-gradient(ellipse at 64% 0%,#e3a83b 0 2px,transparent 3px),radial-gradient(ellipse at 78% 0%,#c1502e 0 2px,transparent 3px),radial-gradient(ellipse at 92% 0%,#e3a83b 0 2px,transparent 3px)}
-#ve-toran:before{content:"";position:absolute;left:-2%;right:-2%;top:-27px;height:55px;border-bottom:3px solid #d89b31;border-radius:0 0 50% 50%;filter:drop-shadow(0 2px 3px #7b3d16)}
-#ve-toran:after{content:"✦  ❋  ✦  ❋  ✦  ❋  ✦  ❋  ✦  ❋  ✦  ❋  ✦";position:absolute;top:5px;left:0;width:100%;text-align:center;letter-spacing:clamp(8px,3vw,34px);font-size:18px;color:#e3a83b;text-shadow:0 1px 3px #713b13}
-#ve-diya-left,#ve-diya-right{position:fixed;bottom:12px;z-index:65;pointer-events:none;font-size:clamp(30px,4vw,48px);filter:drop-shadow(0 0 8px rgba(255,166,40,.65));animation:ve-diya-glow 1.8s ease-in-out infinite alternate}
-#ve-diya-left{left:12px}#ve-diya-right{right:12px;animation-delay:.8s}
-@keyframes ve-diya-glow{from{transform:translateY(0) scale(.96);filter:drop-shadow(0 0 5px rgba(255,166,40,.4))}to{transform:translateY(-4px) scale(1.04);filter:drop-shadow(0 0 13px rgba(255,166,40,.9))}}
-#ve-festive-note{position:fixed;right:18px;top:calc(var(--ve-header-bottom, 90px) + 12px);z-index:69;max-width:min(310px,calc(100vw - 36px));padding:10px 15px;border:1px solid rgba(227,168,59,.7);border-radius:12px;background:rgba(14,59,67,.96);color:#fff7e8;box-shadow:0 8px 24px rgba(0,0,0,.2);font:600 13px/1.45 'Work Sans',sans-serif;pointer-events:auto;text-align:center}
-#ve-festive-note button{margin-left:9px;border:0;background:transparent;color:#f5c66c;font-size:18px;line-height:1;vertical-align:middle;padding:0 2px}
-#ve-festive-layer.ve-christmas #ve-toran:after{content:"✦  ❄  ✦  ❄  ✦  ❄  ✦  ❄  ✦  ❄  ✦";color:#e7f5ff}
-#ve-festive-layer.ve-newyear #ve-toran:after{content:"✦  ✧  ✦  ✧  ✦  ✧  ✦  ✧  ✦  ✧  ✦";color:#f5d27c}
-#ve-festive-layer.ve-holi #ve-toran:after{content:"●  ✿  ●  ✿  ●  ✿  ●  ✿  ●  ✿  ●";color:#f4a6bd}
-#ve-festive-layer.ve-christmas #ve-diya-left,#ve-festive-layer.ve-christmas #ve-diya-right{filter:drop-shadow(0 0 8px rgba(150,210,255,.7))}
-@media(max-width:600px){#ve-toran{height:32px}#ve-toran:after{font-size:13px;letter-spacing:7px}#ve-diya-left,#ve-diya-right{bottom:8px;font-size:30px}#ve-diya-left{left:7px}#ve-diya-right{right:7px}#ve-festive-note{top:105px;right:10px;font-size:11px;padding:8px 10px}}
-@media(prefers-reduced-motion:reduce){#ve-diya-left,#ve-diya-right{animation:none}}
-/* ================= END FESTIVE LAYER STYLES ================= */
+
+/* ===== Vagabond Escapes | Diwali Holiday Campaign ===== */
+.diwali-campaign{position:relative;isolation:isolate;overflow:hidden;padding:clamp(34px,5vw,68px) 0 42px;color:#fffaf0;background:radial-gradient(ellipse at 14% 8%,rgba(255,185,76,.23),transparent 30%),radial-gradient(ellipse at 88% 90%,rgba(226,115,55,.22),transparent 32%),linear-gradient(118deg,#082f35 0%,#104d50 48%,#173b42 100%)}
+.diwali-campaign:before,.diwali-campaign:after{content:"";position:absolute;z-index:-1;pointer-events:none;border:1px solid rgba(246,199,111,.35);border-radius:50%;width:390px;height:390px;top:-250px;left:-120px;box-shadow:0 0 0 18px rgba(246,199,111,.035),0 0 0 38px rgba(246,199,111,.025)}
+.diwali-campaign:after{left:auto;top:auto;right:-160px;bottom:-300px;width:520px;height:520px}
+.dc-lights{height:30px;position:absolute;top:0;left:0;right:0;opacity:.95;background:radial-gradient(circle at 5% 12px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 15% 17px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 25% 12px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 35% 17px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 45% 12px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 55% 17px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 65% 12px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 75% 17px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 85% 12px,#ffe6a0 0 3px,transparent 4px),radial-gradient(circle at 95% 17px,#ffe6a0 0 3px,transparent 4px);filter:drop-shadow(0 0 7px #f7c56d)}
+.dc-inner{max-width:1180px;margin:auto;padding:0 22px;position:relative}
+.dc-topline{display:flex;align-items:center;justify-content:center;gap:12px;color:#f4d99b;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;text-align:center}
+.dc-topline:before,.dc-topline:after{content:"";height:1px;width:min(10vw,90px);background:linear-gradient(90deg,transparent,#dcae60)}.dc-topline:after{transform:rotate(180deg)}
+.dc-title{text-align:center;font-family:Georgia,serif;font-size:clamp(38px,6.2vw,76px);line-height:1.04;letter-spacing:-.035em;margin:17px 0 12px;color:#fff8e9;font-weight:500}
+.dc-title em{font-style:normal;color:#f2c36d}
+.dc-subtitle{text-align:center;color:#e7e0d0;font-size:clamp(14px,1.5vw,17px);max-width:670px;margin:0 auto 27px;line-height:1.7}
+.dc-ornaments{display:flex;justify-content:center;gap:clamp(22px,6vw,75px);align-items:center;margin:10px auto 24px;color:#f6ca75}
+.dc-diya{font-size:34px;filter:drop-shadow(0 0 12px rgba(255,178,66,.8));animation:dcGlow 2.4s ease-in-out infinite alternate}
+@keyframes dcGlow{from{filter:drop-shadow(0 0 5px rgba(255,178,66,.45));transform:translateY(0)}to{filter:drop-shadow(0 0 15px rgba(255,178,66,.95));transform:translateY(-3px)}}
+.dc-destinations{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin:0 auto 25px}
+.dc-destination{min-height:76px;border:1px solid rgba(246,210,145,.42);border-radius:13px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.045));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:12px 7px;color:#fff8e9;text-decoration:none;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.dc-destination:hover{transform:translateY(-4px);border-color:#f2c36d;background:rgba(242,195,109,.15)}
+.dc-destination b{font-size:14px;letter-spacing:.01em}.dc-destination small{color:#e9c985;font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:5px}
+.dc-cta-row{display:flex;justify-content:center;align-items:center;gap:13px;flex-wrap:wrap}
+.dc-cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:14px 25px;background:linear-gradient(100deg,#f8d88d,#e7ad4e);color:#26383a;text-decoration:none;font-weight:800;box-shadow:0 9px 28px rgba(0,0,0,.22);transition:transform .2s ease}
+.dc-cta:hover{transform:translateY(-2px)}.dc-note{text-align:center;color:#d8d2c4;font-size:12px;margin:16px 0 0;letter-spacing:.04em}
+@media(max-width:900px){.dc-destinations{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){.diwali-campaign{padding:32px 0 30px}.dc-inner{padding:0 15px}.dc-title{font-size:42px}.dc-subtitle{font-size:14px;margin-bottom:18px}.dc-ornaments{margin:8px auto 18px}.dc-diya{font-size:27px}.dc-destinations{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.dc-destination{min-height:64px}.dc-destination b{font-size:14px}.dc-cta{width:100%;max-width:320px;padding:14px 18px}}
+@media(prefers-reduced-motion:reduce){.dc-diya{animation:none}.dc-destination,.dc-cta{transition:none}}
 
 </style>
 </head>
 <body>
 
-<!-- Festive decorations are a separate visual layer; original site sections remain unchanged. -->
-<div id="ve-festive-layer" aria-hidden="true"><div id="ve-toran"></div><div id="ve-diya-left">🪔</div><div id="ve-diya-right">🪔</div></div>
-<div id="ve-festive-note" role="status" aria-live="polite" hidden><span id="ve-festive-message"></span><button type="button" aria-label="Dismiss festive greeting" id="ve-festive-close">×</button></div>
-
-
 <div class="topbar">
   <div class="wrap">
     <div>
       <a href="tel:+919773669645">📞 +91 97736 69645</a>
+      <a href="tel:+919999625966">📞 +91 99996 25966</a>
+      <a href="tel:+917524808364">📞 +91 75248 08364</a>
       <a href="mailto:vagabondescapesinfo@gmail.com">✉️ vagabondescapesinfo@gmail.com</a>
     </div>
     <div class="socials">
@@ -324,6 +326,27 @@ header.site{
     </div>
   </div>
 </header>
+
+<section class="diwali-campaign" aria-label="Diwali holiday collection">
+  <div class="dc-lights" aria-hidden="true"></div>
+  <div class="dc-inner">
+    <div class="dc-topline">A Season of Light · A Season of New Journeys</div>
+    <h1 class="dc-title">Celebrate Diwali.<br><em>Discover Somewhere New.</em></h1>
+    <p class="dc-subtitle">Make this festive season unforgettable. Explore handpicked holidays across India and beyond, planned around your dates, preferences and budget.</p>
+    <div class="dc-ornaments" aria-hidden="true"><span class="dc-diya">🪔</span><span>✦ &nbsp; ✧ &nbsp; ✦</span><span class="dc-diya">🪔</span></div>
+    <div class="dc-destinations">
+      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Thailand%20holiday." target="_blank" rel="noopener"><small>International</small><b>Thailand</b></a>
+      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Dubai%20holiday." target="_blank" rel="noopener"><small>International</small><b>Dubai</b></a>
+      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Bali%20holiday." target="_blank" rel="noopener"><small>International</small><b>Bali</b></a>
+      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Turkey%20holiday." target="_blank" rel="noopener"><small>International</small><b>Turkey</b></a>
+      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Kerala%20holiday." target="_blank" rel="noopener"><small>India</small><b>Kerala</b></a>
+      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Manali%20holiday." target="_blank" rel="noopener"><small>India</small><b>Manali</b></a>
+      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Kashmir%20holiday." target="_blank" rel="noopener"><small>India</small><b>Kashmir</b></a>
+    </div>
+    <div class="dc-cta-row"><a class="dc-cta" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20please%20share%20your%20Diwali%20holiday%20options." target="_blank" rel="noopener">✦ &nbsp; ENQUIRE FOR YOUR HOLIDAY</a></div>
+    <p class="dc-note">Personalised holiday planning · No displayed rates · Enquire for details</p>
+  </div>
+</section>
 
 <section class="hero">
   <div class="hero-bg" id="heroBg">
@@ -367,9 +390,11 @@ header.site{
     <div class="connect-grid">
       <div class="connect-card">
         <h4>CALL OR WHATSAPP</h4>
-        <a class="line" href="https://wa.me/919773669645" target="_blank" rel="noopener"><span class="icon-circle">💬</span> +91 97736 69645 (WhatsApp)</a>
-        <a class="line" href="https://wa.me/919999625966" target="_blank" rel="noopener"><span class="icon-circle">💬</span> +91 99996 25966 (WhatsApp)</a>
-        <a class="line" href="tel:+917524808364"><span class="icon-circle">📞</span> +91 7524 808 364</a>
+        <a class="line" href="https://wa.me/919773669645" target="_blank" rel="noopener"><span class="icon-circle">💬</span> +91 97736 69645 (Primary WhatsApp)</a>
+        <a class="line" href="https://wa.me/919999625966" target="_blank" rel="noopener"><span class="icon-circle">💬</span> +91 99996 25966 (Second Option)</a>
+        <a class="line" href="tel:+919999625966"><span class="icon-circle">📞</span> Call: +91 99996 25966</a>
+        <a class="line" href="https://wa.me/917524808364" target="_blank" rel="noopener"><span class="icon-circle">💬</span> +91 75248 08364 (Third Option)</a>
+        <a class="line" href="tel:+917524808364"><span class="icon-circle">📞</span> Call: +91 75248 08364</a>
       </div>
 
       <div class="connect-card">
@@ -1352,49 +1377,5 @@ if(HERO_SLIDES.length){
   }
 }
 </script>
-
-<script>
-/* Automatic seasonal decoration. This script only adds decorative elements. */
-(function(){
-  const now = new Date();
-  const month = now.getMonth()+1;
-  const day = now.getDate();
-  const year = now.getFullYear();
-  let theme = '', greeting = '';
-  // Diwali dates (India): update this small calendar when future official dates are announced.
-  const diwaliDates = {2026:'11-08',2027:'10-29',2028:'10-17',2029:'11-05',2030:'10-26'};
-  const holiDates = {2027:'03-22',2028:'03-11',2029:'03-01',2030:'03-20'};
-  const inWindow = (target, before, after) => {
-    const start = new Date(target.getTime()-before*86400000);
-    const end = new Date(target.getTime()+after*86400000);
-    const today = new Date(year,month-1,day);
-    return today>=new Date(start.getFullYear(),start.getMonth(),start.getDate()) && today<=new Date(end.getFullYear(),end.getMonth(),end.getDate());
-  };
-  const dateFrom = (value) => {const [m,d]=value.split('-').map(Number);return new Date(year,m-1,d);};
-  if(diwaliDates[year] && inWindow(dateFrom(diwaliDates[year]),7,4)){
-    theme='diwali'; greeting='Wishing you and your family a joyful and prosperous Diwali! 🪔 With warm wishes from Vagabond Escapes.';
-  } else if(month===12 && day>=15 && day<=27){
-    theme='christmas'; greeting='Season’s Greetings! 🎄 Plan your next beautiful escape with Vagabond Escapes.';
-  } else if((month===12 && day>=28) || (month===1 && day<=3)){
-    theme='newyear'; greeting='Happy New Year! ✨ Let’s make new travel memories.';
-  } else if(holiDates[year] && inWindow(dateFrom(holiDates[year]),2,1)){
-    theme='holi'; greeting='Wishing you a bright and joyful Holi! 🌸 May your celebrations be filled with colour, happiness and beautiful new memories.';
-  }
-  if(!theme) return;
-  const layer=document.getElementById('ve-festive-layer');
-  if(!layer) return;
-  layer.classList.add('ve-'+theme);
-  const left=document.getElementById('ve-diya-left');
-  const right=document.getElementById('ve-diya-right');
-  if(theme==='christmas'){left.textContent='🎄';right.textContent='❄️';}
-  else if(theme==='newyear'){left.textContent='✨';right.textContent='🎉';}
-  else if(theme==='holi'){left.textContent='🌸';right.textContent='🎨';}
-  const note=document.getElementById('ve-festive-note');
-  const msg=document.getElementById('ve-festive-message');
-  const close=document.getElementById('ve-festive-close');
-  if(note && msg){msg.textContent=greeting;note.hidden=false;close.addEventListener('click',()=>{note.hidden=true;});}
-})();
-</script>
-
 </body>
 </html>
