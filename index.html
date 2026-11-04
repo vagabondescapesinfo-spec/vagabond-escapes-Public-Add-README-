@@ -285,6 +285,130 @@ header.site{
 @media(max-width:560px){.diwali-campaign{padding:32px 0 30px}.dc-inner{padding:0 15px}.dc-title{font-size:42px}.dc-subtitle{font-size:14px;margin-bottom:18px}.dc-ornaments{margin:8px auto 18px}.dc-diya{font-size:27px}.dc-destinations{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.dc-destination{min-height:64px}.dc-destination b{font-size:14px}.dc-cta{width:100%;max-width:320px;padding:14px 18px}}
 @media(prefers-reduced-motion:reduce){.dc-diya{animation:none}.dc-destination,.dc-cta{transition:none}}
 
+
+/* ===== NEW EDITORIAL LUXURY REDESIGN ===== */
+:root{--teal-deep:#103c3d;--teal-mid:#1c6662;--teal-soft:#6c9a8d;--paper:#f6f1e7;--paper-2:#ece3d2;--ink:#1d2926;--rust:#bd633f;--gold:#d9aa58;--line:#d8cebb;--light:#fffdf7}
+body{background:#f6f1e7;color:#1d2926}
+.topbar{background:#103c3d;font-size:12px;letter-spacing:.01em}
+header.site{background:rgba(255,253,247,.96);backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(22,48,43,.06);border-bottom:1px solid #e8dfcf}
+.site-head-inner{padding-top:16px;padding-bottom:16px}
+.brand-logo{height:52px;width:52px;object-fit:contain;border:1px solid #e9dfce;padding:3px;background:white}
+.brand-name{font-size:22px;letter-spacing:-.03em}
+.brand-tag{font-size:10px;letter-spacing:.11em;text-transform:uppercase}
+.mode-toggle{background:#f1eadc;border-color:#e2d7c3}
+.mode-toggle button{font-size:13px;padding:9px 18px}
+.mode-toggle button.active{background:#103c3d;box-shadow:none}
+.btn{border-radius:30px;padding:12px 19px;font-size:13px;letter-spacing:.01em}
+.btn-rust{background:#bd633f}
+.btn-outline{border-color:#c9b99c}
+.diwali-editorial{background:#f1e9d9;color:#193c39;padding:46px 0 0;overflow:hidden;isolation:isolate}
+.diwali-editorial:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 80% 30%,rgba(215,170,88,.22),transparent 32%),linear-gradient(120deg,#f6f0e4 0%,#eee4d2 55%,#e8dcc7 100%)}
+.diwali-editorial:after{content:"";position:absolute;z-index:-1;right:-130px;top:70px;width:420px;height:420px;border:1px solid rgba(160,117,58,.18);border-radius:50%;box-shadow:0 0 0 24px rgba(160,117,58,.035),0 0 0 54px rgba(160,117,58,.025)}
+.editorial-lights{position:absolute;top:0;left:0;right:0;height:38px;display:flex;justify-content:space-around;align-items:flex-start;color:#b77c37;font-size:21px;text-shadow:0 0 10px #dba84d}
+.editorial-wrap{max-width:1240px;margin:auto;padding:38px 30px 50px;display:grid;grid-template-columns:1.02fr .98fr;gap:42px;align-items:center;position:relative}
+.editorial-copy{padding:18px 0 12px;max-width:600px}
+.editorial-eyebrow{display:flex;align-items:center;gap:12px;color:#9a6833;font-size:10px;font-weight:800;letter-spacing:.22em}
+.eyebrow-line{width:30px;height:1px;background:#bd8b4d}
+.editorial-season{font-family:Georgia,serif;font-size:clamp(22px,2.5vw,31px);line-height:1.12;color:#9d6738;margin:22px 0 12px;font-style:italic}
+.editorial-season em{color:#bd633f}
+.editorial-title{font-family:'Fraunces',Georgia,serif!important;color:#103c3d!important;font-size:clamp(39px,5.1vw,66px)!important;line-height:1.02!important;letter-spacing:-.055em;max-width:680px;font-weight:600!important}
+.editorial-title span{color:#b85e3e}
+.editorial-description{max-width:500px;color:#53635a;font-size:15px;line-height:1.85;margin:22px 0 25px}
+.editorial-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.editorial-primary{display:inline-flex;align-items:center;gap:28px;padding:15px 22px;background:#103c3d;color:#fffdf7;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.04em;box-shadow:0 10px 22px rgba(16,60,61,.18);transition:.2s}
+.editorial-primary:hover{background:#bd633f;transform:translateY(-2px)}
+.editorial-primary span{font-size:18px}
+.editorial-secondary{font-size:12px;font-weight:700;color:#315a52;border-bottom:1px solid #b89b6b;padding-bottom:5px}
+.editorial-trust{display:flex;align-items:center;gap:10px;color:#7b7969;font-size:11px;margin-top:32px;letter-spacing:.03em;flex-wrap:wrap}
+.editorial-trust span{color:#b87b3d}.editorial-trust i{width:4px;height:4px;border-radius:50%;background:#c59a5d;margin:0 4px}
+.editorial-visual{height:490px;position:relative;max-width:590px;width:100%;justify-self:end}
+.editorial-photo{position:absolute;overflow:hidden;border:7px solid #fffaf0;box-shadow:0 18px 45px rgba(42,54,42,.17)}
+.editorial-photo img{width:100%;height:100%;object-fit:cover}
+.editorial-photo-main{left:4%;top:8%;width:69%;height:82%;border-radius:48% 48% 5px 5px}
+.editorial-photo-top{right:0;top:0;width:39%;height:38%;border-radius:4px}
+.editorial-photo-bottom{right:0;bottom:2%;width:39%;height:39%;border-radius:4px}
+.photo-label{position:absolute;bottom:12px;left:13px;background:rgba(16,60,61,.88);color:white;font-size:9px;letter-spacing:.16em;padding:7px 10px}
+.editorial-stamp{position:absolute;left:61%;top:42%;width:108px;height:108px;border-radius:50%;background:#bd633f;color:#fff8eb;border:4px double #f5d9a1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(10deg);box-shadow:0 8px 22px rgba(88,51,29,.2)}
+.editorial-stamp span{font-family:Georgia,serif;font-size:21px;line-height:1}
+.editorial-stamp b{font-size:9px;line-height:1.1;letter-spacing:.12em;margin:4px 0}
+.editorial-stamp small{font-size:5px;letter-spacing:.13em}
+.editorial-diya{position:absolute;right:37%;bottom:0;font-size:35px;filter:drop-shadow(0 4px 10px rgba(191,126,46,.45))}
+.editorial-destinations{background:#103c3d;color:#fffdf7;display:grid;grid-template-columns:1.25fr repeat(7,1fr);align-items:center;padding:17px max(28px,calc((100vw - 1240px)/2));gap:0;position:relative}
+.destination-intro{display:flex;flex-direction:column;padding:0 18px 0 0}
+.destination-intro small{font-size:8px;letter-spacing:.2em;color:#d9b678;font-weight:700}
+.destination-intro b{font-family:Georgia,serif;font-size:22px;font-weight:400}
+.editorial-destinations>a{display:flex;align-items:center;gap:7px;justify-content:center;padding:12px 8px;border-left:1px solid rgba(255,255,255,.15);font-size:12px;font-weight:600;white-space:nowrap;transition:.2s}
+.editorial-destinations>a span{font-size:8px;color:#d9b678}
+.editorial-destinations>a i{font-style:normal;color:#d9b678}
+.editorial-destinations>a:hover{color:#f1c978;background:rgba(255,255,255,.06)}
+.hero{padding:58px 0 42px;min-height:340px;display:flex;align-items:center}
+.hero-bg-tint{background:linear-gradient(90deg,rgba(8,40,43,.82),rgba(13,55,57,.58),rgba(14,59,67,.34))}
+.hero h1{font-size:clamp(34px,4vw,52px);max-width:760px}
+.hero-kicker{letter-spacing:.18em;text-transform:uppercase;font-size:11px}
+.search-panel{border-radius:4px;max-width:760px;margin-top:26px;padding:12px}
+.search-panel input{border-radius:3px}.search-panel button{border-radius:3px;background:#bd633f}
+.chip-row{padding:22px 0 5px}
+.chip{border-radius:3px;background:#fffdf7;border-color:#e1d6c3}
+.chip.active{background:#103c3d;border-color:#103c3d}
+.destinations{padding-bottom:70px}
+.region-block{margin-top:52px}
+.region-head{border-bottom:1px solid #cfc2ab}
+.region-head h2{font-size:31px;letter-spacing:-.03em}
+.region-note{font-size:13px;color:#68746c}
+.card-grid{gap:22px;grid-template-columns:repeat(auto-fill,minmax(285px,1fr))}
+.pkg-card{border:1px solid #e4dac9;border-radius:4px;box-shadow:0 8px 24px rgba(31,49,42,.055);transition:transform .22s,box-shadow .22s}
+.pkg-card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(31,49,42,.12)}
+.pkg-photo{height:190px}
+.pkg-card-body{padding:21px}
+.pkg-card h3{font-size:21px}
+.pkg-duration{border-radius:2px;background:#f2eadb;color:#315b52}
+.pkg-price-row{display:none!important}
+.toggle-itin{border-radius:3px;border-color:#315b52}
+.itin-panel{background:#f4eee2}
+.closing{background:#eee4d2;padding:64px 24px}
+.closing h2{font-size:34px}
+.connect{background:#103c3d}
+.connect-card{border-radius:4px}
+.float-wa{background:#1fae60;box-shadow:0 8px 24px rgba(0,0,0,.22)}
+@media(max-width:1000px){
+ .editorial-wrap{grid-template-columns:1fr 1fr;gap:20px;padding-left:24px;padding-right:24px}
+ .editorial-visual{height:410px}
+ .editorial-destinations{grid-template-columns:repeat(4,1fr);padding:14px 20px}
+ .destination-intro{padding:8px 12px}
+ .editorial-destinations>a{border-left:0;border-top:1px solid rgba(255,255,255,.13)}
+}
+@media(max-width:700px){
+ .editorial-wrap{grid-template-columns:1fr;padding:42px 20px 30px;gap:28px}
+ .editorial-copy{padding:8px 0}
+ .editorial-title{font-size:43px!important}
+ .editorial-visual{height:390px;max-width:500px;justify-self:center}
+ .editorial-photo-main{left:2%;width:70%;height:83%}
+ .editorial-photo-top,.editorial-photo-bottom{width:39%}
+ .editorial-stamp{width:88px;height:88px;left:60%}
+ .editorial-destinations{grid-template-columns:repeat(2,1fr);padding:12px 15px}
+ .destination-intro{grid-column:1/-1;padding:8px 8px 12px}
+ .editorial-destinations>a{justify-content:space-between;padding:13px 10px;border-top:1px solid rgba(255,255,255,.14)}
+ .editorial-destinations>a:nth-child(odd){border-left:1px solid rgba(255,255,255,.14)}
+ .hero{padding:42px 0 34px;min-height:360px}
+ .topbar .wrap{justify-content:center}
+ .topbar .wrap>div:first-child{display:flex;flex-wrap:wrap;justify-content:center}
+ .site-head-inner{justify-content:center}
+ .brand{margin-right:auto}
+ .head-cta{width:100%;justify-content:center}
+ .head-cta .btn{flex:1;justify-content:center}
+ .mode-toggle{order:3;width:100%;justify-content:center}
+ .mode-toggle button{flex:1}
+}
+@media(max-width:420px){
+ .editorial-title{font-size:37px!important}
+ .editorial-visual{height:320px}
+ .editorial-photo{border-width:5px}
+ .editorial-stamp{width:76px;height:76px}
+ .editorial-stamp span{font-size:16px}
+ .editorial-stamp b{font-size:7px}
+ .editorial-trust{font-size:10px}
+}
+
 </style>
 </head>
 <body>
@@ -327,24 +451,39 @@ header.site{
   </div>
 </header>
 
-<section class="diwali-campaign" aria-label="Diwali holiday collection">
-  <div class="dc-lights" aria-hidden="true"></div>
-  <div class="dc-inner">
-    <div class="dc-topline">A Season of Light · A Season of New Journeys</div>
-    <h1 class="dc-title">Celebrate Diwali.<br><em>Discover Somewhere New.</em></h1>
-    <p class="dc-subtitle">Make this festive season unforgettable. Explore handpicked holidays across India and beyond, planned around your dates, preferences and budget.</p>
-    <div class="dc-ornaments" aria-hidden="true"><span class="dc-diya">🪔</span><span>✦ &nbsp; ✧ &nbsp; ✦</span><span class="dc-diya">🪔</span></div>
-    <div class="dc-destinations">
-      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Thailand%20holiday." target="_blank" rel="noopener"><small>International</small><b>Thailand</b></a>
-      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Dubai%20holiday." target="_blank" rel="noopener"><small>International</small><b>Dubai</b></a>
-      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Bali%20holiday." target="_blank" rel="noopener"><small>International</small><b>Bali</b></a>
-      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Turkey%20holiday." target="_blank" rel="noopener"><small>International</small><b>Turkey</b></a>
-      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Kerala%20holiday." target="_blank" rel="noopener"><small>India</small><b>Kerala</b></a>
-      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Manali%20holiday." target="_blank" rel="noopener"><small>India</small><b>Manali</b></a>
-      <a class="dc-destination" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20I%27m%20interested%20in%20a%20Kashmir%20holiday." target="_blank" rel="noopener"><small>India</small><b>Kashmir</b></a>
+<section class="diwali-campaign diwali-editorial" aria-label="Diwali holiday collection">
+  <div class="editorial-lights" aria-hidden="true">
+    <span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span>
+  </div>
+  <div class="editorial-wrap">
+    <div class="editorial-copy">
+      <div class="editorial-eyebrow"><span class="eyebrow-line"></span> THE FESTIVE HOLIDAY EDITION <span class="eyebrow-line"></span></div>
+      <div class="editorial-season">A little more wonder.<br><em>A lot more memories.</em></div>
+      <h1 class="editorial-title">Celebrate Diwali.<br><span>Discover Somewhere New.</span></h1>
+      <p class="editorial-description">Make this festive season unforgettable. From mountain escapes to faraway shores, we’ll plan a holiday around your dates, preferences and budget.</p>
+      <div class="editorial-actions">
+        <a class="editorial-primary" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20please%20help%20me%20plan%20a%20Diwali%20holiday." target="_blank" rel="noopener">Plan My Holiday <span>↗</span></a>
+        <a class="editorial-secondary" href="#destinations">Explore Destinations <span>↓</span></a>
+      </div>
+      <div class="editorial-trust"><span>✦</span> Thoughtfully planned journeys <i></i> Personalised holiday quotes</div>
     </div>
-    <div class="dc-cta-row"><a class="dc-cta" href="https://wa.me/919773669645?text=Hello%20Vagabond%20Escapes%2C%20please%20share%20your%20Diwali%20holiday%20options." target="_blank" rel="noopener">✦ &nbsp; ENQUIRE FOR YOUR HOLIDAY</a></div>
-    <p class="dc-note">Personalised holiday planning · No displayed rates · Enquire for details</p>
+    <div class="editorial-visual" aria-label="Holiday inspiration">
+      <div class="editorial-photo editorial-photo-main"><img src="manali1.jpg" alt="Scenic mountain holiday in Manali"><span class="photo-label">INDIA · MOUNTAIN ESCAPES</span></div>
+      <div class="editorial-photo editorial-photo-top"><img src="bali_region.jpg" alt="Tropical Bali holiday"><span class="photo-label">BALI</span></div>
+      <div class="editorial-photo editorial-photo-bottom"><img src="dubai_region.jpg" alt="Dubai city holiday"><span class="photo-label">DUBAI</span></div>
+      <div class="editorial-stamp"><span>GO</span><b>BEYOND<br>THE<br>ORDINARY</b><small>VAGABOND ESCAPES</small></div>
+      <div class="editorial-diya" aria-hidden="true">🪔</div>
+    </div>
+  </div>
+  <div class="editorial-destinations">
+    <div class="destination-intro"><small>YOUR NEXT CHAPTER</small><b>Where to?</b></div>
+    <a href="https://wa.me/919773669645?text=I%27m%20interested%20in%20Thailand." target="_blank" rel="noopener"><span>01</span> Thailand <i>↗</i></a>
+    <a href="https://wa.me/919773669645?text=I%27m%20interested%20in%20Dubai." target="_blank" rel="noopener"><span>02</span> Dubai <i>↗</i></a>
+    <a href="https://wa.me/919773669645?text=I%27m%20interested%20in%20Bali." target="_blank" rel="noopener"><span>03</span> Bali <i>↗</i></a>
+    <a href="https://wa.me/919773669645?text=I%27m%20interested%20in%20Turkey." target="_blank" rel="noopener"><span>04</span> Turkey <i>↗</i></a>
+    <a href="https://wa.me/919773669645?text=I%27m%20interested%20in%20Kerala." target="_blank" rel="noopener"><span>05</span> Kerala <i>↗</i></a>
+    <a href="https://wa.me/919773669645?text=I%27m%20interested%20in%20Manali." target="_blank" rel="noopener"><span>06</span> Manali <i>↗</i></a>
+    <a href="https://wa.me/919773669645?text=I%27m%20interested%20in%20Kashmir." target="_blank" rel="noopener"><span>07</span> Kashmir <i>↗</i></a>
   </div>
 </section>
 
